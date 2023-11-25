@@ -1,0 +1,415 @@
+\documentclass[lang=cn,10pt]{elegantbook}
+
+\title{高等数学笔记：基于 \LaTeX{} 的个人知识总结}
+\subtitle{Advanced Math Notes: Based on \LaTeX{}}
+
+\author{彭正萧 \& PENG Zhengxiao}
+\institute{西北农林科技大学}
+\date{始于2023年11月19日}
+\version{第七版\ 上册（同济大学数学系\ 编）}
+\bioinfo{模板}{\href{https://github.com/ElegantLaTeX/}{ElegantLaTeX}}
+
+\extrainfo{不要以为抹消过去，重新来过，即可发生什么改变。—— 比企谷八幡}
+
+\setcounter{tocdepth}{3}
+
+\logo{logo.pdf}
+\cover{cover.jpg}
+
+% 本文档命令
+\usepackage{tkz-fct}
+\usepackage{array}
+\newcommand{\ccr}[1]{\makecell{{\color{#1}\rule{1cm}{1cm}}}}
+
+% 修改标题页的橙色带
+% \definecolor{customcolor}{RGB}{32,178,170}
+% \colorlet{coverlinecolor}{customcolor}
+
+% 定理类环境：definition(定义)、theorem(定理)、lemma(引理)、corollay(推论)、axiom(公理)、postulate(假设)
+% 示例类环境：example, problem, exercise
+% 提示类环境：note
+% 结论类环境：conclusion, assumption, property, remark, solution
+
+\begin{document}
+
+\maketitle
+\frontmatter
+
+\tableofcontents
+
+\mainmatter
+
+\chapter{函数与极限}
+
+\section{映射与函数}
+
+本节主要介绍映射、函数及有关概念，函数的性质与运算等。
+
+\subsection{映射}
+
+\begin{definition}
+	设\(X\)、\( Y \)是两个非空集合，如果存在一个法则\( f \)，使得对\( X \)中每个元素\( x \)，按法则\( f \)，在\( Y \)中有唯一确定的元素\( y \)与之对应，那么称\( f \)为从\( X \)到\( Y \)的映射，记作
+	\[ f:X \rightarrow Y \]
+	其中\( y \)称为元素\( x \)（在映射\( f \)下）的像，并记作\( f(x) \)，即
+	\[ y = f(x) \]
+	而元素\( x \)称为元素\( y \)（在映射\( f \)下）的一个原像；集合\( X \)称为映射\( f \)的定义域，记作\( D_{f} \)，即\( D_{f} = X \)；\( X \)中所有元素的像所组成的集合称为映射\( f \)的值域，记作\( R_{f} \)或\( f(X) \)，即
+	\[ R_{f} = f(X) = \{ f(x)\ |\ x \in X\}\].
+\end{definition}
+
+\subsection{本地免安装使用}
+
+\textbf{免安装}使用方法如下：从 GitHub 或者 CTAN 下载最新版，严格意义上只需要类文件 \lstinline{elegantbook.cls}。然后将模板文件放在你的工作目录下即可使用。这样使用的好处是，无需安装，简便；缺点是，当模板更新之后，你需要手动替换 \lstinline{cls} 文件。
+
+\subsection{发行版安装与更新}
+
+本模板测试环境为 
+\begin{enumerate}
+  \item Win10 + \TeX{} Live 2022；
+  \item Ubuntu 20.04 + \TeX{} Live 2022；
+  \item macOS Monterey + Mac\TeX{} 2022。
+\end{enumerate}
+
+\TeX Live/Mac\TeX{} 的安装请参考啸行的\href{https://github.com/OsbertWang/install-latex-guide-zh-cn/releases/}{一份简短的关于安装 \LaTeX{} 安装的介绍}。
+
+安装 \TeX{} Live 之后，安装后建议升级全部宏包，升级方法：使用 cmd 或 terminal 运行 \lstinline{tlmgr update --all}，如果 tlmgr 需要更新，请使用 cmd 运行 \lstinline{tlmgr update --self}，如果更新过程中出现了中断，请改用 \lstinline{tlmgr update --self --all --reinstall-forcibly-removed} 更新，也即
+
+\begin{lstlisting}
+tlmgr update --self 
+tlmgr update --all
+tlmgr update --self --all --reinstall-forcibly-removed
+\end{lstlisting}
+
+更多的内容请参考 \href{https://tex.stackexchange.com/questions/55437/how-do-i-update-my-tex-distribution}{How do I update my \TeX{} distribution?}
+
+\subsection{其他发行版本}
+
+由于宏包版本问题，本模板不支持 C\TeX{} 套装，请务必安装 TeX Live/Mac\TeX{}。更多关于 \TeX{} Live 的安装使用以及 C\TeX{} 与 \TeX{} Live 的兼容、系统路径问题，请参考官方文档以及啸行的\href{https://github.com/OsbertWang/install-latex-guide-zh-cn/releases/}{一份简短的关于安装 \LaTeX{} 安装的介绍}。
+
+
+\section{关于提交}
+
+出于某些因素的考虑，Elegant\LaTeX{} 项目自 2019 年 5 月 20 日开始，\textbf{不再接受任何非作者预约性质的提交}（pull request）！如果你想改进模板，你可以给我们提交 issues，或者可以在遵循协议（LPPL-1.3c）的情况下，克隆到自己仓库下进行修改。
+
+
+\chapter{ElegantBook 设置说明}
+
+本模板基于基础的 book 文类，所以 book 的选项对于本模板也是有效的（纸张无效，因为模板有设备选项）。默认编码为 UTF-8，推荐使用 \TeX{} Live 编译。
+
+\section{语言模式}
+本模板内含两套基础语言环境 \lstinline{lang=cn}、\lstinline{lang=en}。改变语言环境会改变图表标题的引导词（图，表），文章结构词（比如目录，参考文献等），以及定理环境中的引导词（比如定理，引理等）。不同语言模式的启用如下：
+
+
+% 附录
+\appendix
+\chapter{常用的导数公式}
+
+\chapter{常用的三角函数公式}
+\begin{enumerate}
+	\item 常用三角函数关系
+	\begin{enumerate}
+		\item 倒数关系：\( \tan \alpha \cdot \cot \alpha = \sin \alpha \cdot \csc \alpha = \cos \alpha \cdot \sec \alpha = 1 \).
+		\\
+		\item 商数关系：\( \tan \alpha = \dfrac{\sin \alpha}{\cos \alpha} \)、\( \cot \alpha = \dfrac{\cos\alpha}{\sin\alpha} \).
+		\\
+		\item 平方关系：\( \sin^{2}\alpha + \cos^{2}\alpha = 1 \)、\( 1 + \cot^{2}\alpha = \csc^{2}\alpha \)、\( 1 + \tan^{2}\alpha = \sec^{2}\alpha \).
+	\end{enumerate}
+	\item 诱导公式（\textcolor{red}{奇变偶不变符号看象限}）
+	\begin{enumerate}
+		\item 
+		\( \begin{array}{ll}
+			\sin(2k\pi + \alpha) = \sin \alpha & \cos(2k\pi + \alpha) = \cos \alpha \\
+			\tan(2k\pi + \alpha) = \tan \alpha & \cot(2k\pi + \alpha) = \cot \alpha \\
+		\end{array}
+		\)
+		\item 
+		\(
+			\begin{array}{ll}
+				\sin(\pi + \alpha) = -\sin \alpha & \cos(\pi + \alpha) = -\cos \alpha \\
+				\tan(\pi + \alpha) = \tan \alpha &	\cot(\pi + \alpha) = \cot \alpha \\		
+			\end{array}
+		\)
+	\end{enumerate}
+\end{enumerate}
+\chapter{基本初等函数的图形}
+\begin{itemize}
+	\item 幂函数
+		\begin{figure}[!htb]
+			\centering
+			\begin{tikzpicture}[scale=1.5]
+				\draw[->,black] (0,0) -- (3,0);
+				\draw[->,black] (0,0) -- (0,3);
+				
+				\tkzInit[xmax=2, ymax=2]
+				\tkzHLine{2}
+				\tkzVLine{2}
+%				\tkzFct[samples=1, domain=0:2]{2}
+%				\tkzFct[samples=1, domain=0:1,style=dashed]{1}
+				\tkzFct[samples=400, domain=0:5]{x**3}
+				\tkzFct[samples=400, domain=0:5]{x**2}
+				\tkzFct[samples=400, domain=0:5]{x**(1.5)}
+%				\tkzVLine{2}
+%				\tkzVLine[style=dashed,domain=0:1]{1}
+				\tkzFct[samples=2, domain=0:5]{x}
+				\tkzFct[samples=400, domain=0:5]{x**(2./3.)}
+				\tkzFct[samples=400, domain=0:5]{x**(1./3.)}
+				\tkzFct[samples=400, domain=0:5]{x**(.5)}
+				
+				\draw[dashed,black] (0,1) -- (1,1);
+				\draw[dashed,black] (1,0) -- (1,1);
+			\end{tikzpicture}
+			\qquad\qquad
+			\begin{tikzpicture}[scale=1.5]
+				\draw[->,black] (0,0) -- (3,0);
+				\draw[->,black] (0,0) -- (0,3);
+				
+				\tkzInit[xmax=2,ymax=2]
+				\tkzFct[samples=400,domain=0.1:2]{x**(-1./3)}
+				\tkzFct[samples=400,domain=0.1:2]{x**(-0.5)}
+				\tkzFct[samples=400,domain=0.1:2]{x**(-1)}
+				\tkzFct[samples=400,domain=0.1:2]{x**(-2)}
+				\tkzFct[samples=400,domain=0.5:2]{x**(-3)}
+				\tkzVLine{2}
+				\tkzHLine{2}
+				
+				\draw[thick,black,dashed] (0,1) -- (1,1);
+				\draw[thick,black,dashed] (1,0) -- (1,1);
+			\end{tikzpicture}
+			\caption{\( y=x^{\mu} \)}
+		\end{figure}
+	\item 指数函数
+		\begin{figure}[!htb]
+			\centering
+			\begin{tikzpicture}[scale=1]
+				\tkzInit[xmax=3,xmin=-3,ymax=5]
+				\tkzFct[samples=400,domain=-2:1.5]{exp(x)}
+				\tkzFct[samples=400,domain=-1.5:2]{exp(-x)}
+				
+				\draw[->,black] (-3,0) -- (3,0);
+				\draw[->,black] (0,0) -- (0,5);
+				\node[below] (O) at (0,0) {\( O \)};
+				\node[below] (x) at (3,0) {\( x \)};
+				\node[left] (y) at (0,5) {\( y \)};
+				\node[left] (1) at (0,1) {\( 1 \)};
+				\node[below] (1.) at (1,0) {\( 1 \)};
+				\node[right] (>) at (1,2) {\( a > 1 \)};
+				\node[left] (<) at (-1,2) {\( 0<a<1 \)};
+			\end{tikzpicture}
+			\caption{\( y=a^{x} \)}
+		\end{figure}
+	\item 对数函数
+		\begin{figure}[!htb]
+			\centering
+			\begin{tikzpicture}[scale=1]
+				\draw[->, black] (0,-3) -- (0,3);
+				\draw[->, black] (0,0) -- (5,0);
+				\node[left] at (0,0) {\( O \)};
+				\node[below] at (5,0) {\( x \)};
+				\node[left] at (0,3) {\( y \)};
+				\node[left] at (0,1) {\( 1 \)};
+				\node[below] at (1,0) {\( 1 \)};
+				\node[below] at (3,0.9) {\( a>1 \)};
+				\node[above] at (3,-0.9) {\( 0<a<1 \)};
+				
+				\tkzInit[xmax=4,ymax=2,ymin=-2]
+				\tkzFct[samples=400,domain=0:4]{log(x)}
+				\tkzFct[samples=400,domain=0:4]{-log(x)}
+			\end{tikzpicture}
+			\caption{\( y=\log_{a} x \)}
+		\end{figure}
+	\newpage
+	\item 三角函数
+	\begin{enumerate}
+		\item 正弦函数
+		\begin{figure}[!htb]
+			\centering
+			\begin{tikzpicture}[scale=1]
+				\draw[->,black] (-2.3*pi,0) -- (2.3*pi,0);
+				\draw[->,black] (0,-1.5) -- (0,1.5);
+				\draw[black] (0,-1) -- (0.1,-1);
+				\draw[black] (0,1) -- (0.1,1);
+				\node[below] at (0.15,0) {\( O \)};
+				\node[left] at (0,1) {\( 1 \)};
+				\node[left] at (0,-1) {\( -1 \)};
+				\foreach \myx in {-2*pi,-1.5*pi,-1*pi,-0.5*pi,0.5*pi,1*pi,1.5*pi,2*pi}{%
+					\draw (\myx,0) -- (\myx,0.1);
+				}
+				\node[below] at (2.1*pi,0) {\( 2\pi \)};
+				\node[below] at (1.5*pi,0) {\( \frac{3\pi}{2} \)};
+				\node[below] at (0.9*pi,0) {\( \pi \)};
+				\node[below] at (0.5*pi,0) {\( \frac{\pi}{2} \)};
+				
+				\node[below] at (-1.9*pi,0) {\( -2\pi \)};
+				\node[below] at (-1.5*pi,0) {\( -\frac{3\pi}{2} \)};
+				\node[below] at (-1.1*pi,0) {\( -\pi \)};
+				\node[below] at (-0.5*pi,0) {\( -\frac{\pi}{2} \)};
+				
+				\tkzInit[xmin=-2.2*pi,xmax=2.2*pi,ymin=-1.5,ymax=1.5]
+				\tkzFct[color=black,thick,domain = -2.2*pi:2.2*pi]{sin(x)}
+			\end{tikzpicture}
+			\caption{\( y = \sin x \)}
+		\end{figure}
+		\item 余弦函数
+		\begin{figure}[!htb]
+			\centering
+			\begin{tikzpicture}[scale=1]
+				\draw[->,black] (-1.8*pi,0) -- (2.8*pi,0);
+				\draw[->,black] (0,-1.5) -- (0,1.5);
+				\draw[black] (0,-1) -- (0.1,-1);
+				%				\draw[black] (0,1) -- (0.1,1);
+				\node[below] at (0.15,0) {\( O \)};
+				\node[left] at (0,1) {\( 1 \)};
+				\node[left] at (0,-1) {\( -1 \)};
+				\foreach \myx in {-1.5*pi,-1*pi,-0.5*pi,0.5*pi,1*pi,1.5*pi,2*pi,2.5*pi}{%
+					\draw (\myx,0) -- (\myx,0.1);
+				}
+				\node[below] at (2.5*pi,0) {\( \frac{5\pi}{2} \)};
+				\node[below] at (2.1*pi,0) {\( 2\pi \)};
+				\node[below] at (1.55*pi,0) {\( \frac{3\pi}{2} \)};
+				\node[below] at (1*pi,0) {\( \pi \)};
+				\node[below] at (0.5*pi,0) {\( \frac{\pi}{2} \)};
+				
+				%				\node[below] at (-2*pi,0) {\( -2\pi \)};
+				\node[below] at (-1.6*pi,0) {\( -\frac{3\pi}{2} \)};
+				\node[below] at (-1*pi,0) {\( -\pi \)};
+				\node[below] at (-0.5*pi,0) {\( -\frac{\pi}{2} \)};
+				
+				\tkzInit[xmin=-1.8*pi,xmax=2.7*pi,ymin=-1.5,ymax=1.5]
+				\tkzFct[color=black,thick,domain = -1.8*pi:2.7*pi]{cos(x)}
+			\end{tikzpicture}
+			\caption{\( y = \cos x \)}
+		\end{figure}
+		\item 正切函数
+		\begin{figure}[!htb]
+			\centering
+			\begin{tikzpicture}[scale=0.5]
+				\draw[->,black] (0,-5) -- (0,5);
+				\draw[->,black] (-1.8*pi,0) -- (2.8*pi,0);
+				
+				\tkzInit[xmin=-1.5*pi,xmax=2.5*pi,ymin=-5,ymax=5]
+				\foreach \i in {-1.5,-0.5,0.5,1.5} {
+					\tkzFct[domain=\i*pi+0.01:(\i+1)*pi-0.01]{tan(\x)}
+				}
+				\foreach \i in {-1.5,-0.5,0.5,1.5,2.5}{%
+					\tkzVLine[dashed]{\i*pi}
+				}
+			\end{tikzpicture}
+			\caption{\( y = \tan x \)}
+		\end{figure}
+		\item 余切函数
+		\begin{figure}[!htb]
+			\centering
+			\begin{tikzpicture}[scale=0.5]
+				\draw[->,black] (0,-5) -- (0,5);
+				\draw[->,black] (-2.3*pi,0) -- (2.3*pi,0);
+				\node[below] at (-0.22,0) {\( O \)};
+				
+				\tkzInit[xmin=-2*pi,xmax=2*pi,ymin=-5,ymax=5]
+				\foreach \xxx in {-2,-1,1,2}{%
+					\tkzVLine[dashed]{\xxx*pi}
+				}
+				\foreach \i in {-2,-1,0,1}{%
+					\tkzFct[samples=400,domain=\i*pi+0.01:(\i + 1)*pi-0.01]{1/tan(x)}
+				}
+			\end{tikzpicture}
+			\caption{\( y = \cot x \)}
+		\end{figure}
+		\newpage
+		\item 正割函数
+		\begin{figure}[!htb]
+			\centering
+			\begin{tikzpicture}[scale=0.5]
+				\draw[->,black] (-1.8*pi,0) -- (1.8*pi,0);
+				\draw[->,black] (0,-5) -- (0,5);
+				
+				\tkzInit[xmin=-1.5*pi,xmax=1.5*pi,ymin=-5,ymax=5]
+				\foreach \i in {-1.5,-0.5,0.5} {
+					\tkzFct[domain=\i*pi+0.01:(\i+1)*pi-0.01]{1/cos(x)}
+				}
+				\foreach \i in {-1.5,-0.5,0.5,1.5}{%
+					\tkzVLine[dashed]{\i*pi}
+				}
+			\end{tikzpicture}
+			\caption{\( y = \sec x \)}
+		\end{figure}
+		\item 余割函数
+		\begin{figure}[!htb]
+			\centering
+			\begin{tikzpicture}[scale=0.5]
+				\draw[->,black] (-1.3*pi,0) -- (2.3*pi,0);
+				\draw[->,black] (0,-5) -- (0,5);
+				
+				\tkzInit[xmin=-pi,xmax=2*pi,ymax=5,ymin=-5]
+				\foreach \i in {-1,1,2}{%
+					\tkzVLine[dashed]{\i*pi}
+				}
+				\foreach \i in {-1,0,1}{%
+					\tkzFct[samples=400,domain=\i*pi+0.01:(\i+1)*pi-0.01]{1/sin(x)}
+				}
+			\end{tikzpicture}
+			\caption{\( y = \csc x \)}
+		\end{figure}
+	\end{enumerate}
+	\item 反三角函数
+		\begin{enumerate}
+			\item 反正弦函数
+			\begin{figure}[!htb]
+				\centering
+				\begin{tikzpicture}[scale=0.5]
+					\draw[->,black] (-1.5,0) -- (1.5,0);
+					\draw[->,black] (0,-1.1*pi) -- (0,1.1*pi);
+					
+					\tkzInit[xmin=-1.5,xmax=1.5,ymin=-pi,ymax=pi]
+					\tkzFct[samples=400,domain = -1:1]{asin(x)}
+				\end{tikzpicture}
+				\caption{\( y=\arcsin x \)}
+			\end{figure}
+			\newpage
+			\item 反余弦函数
+			\begin{figure}[!htb]
+				\centering
+				\begin{tikzpicture}[scale=0.5]
+					\draw[->,black] (-1.5,0) -- (1.5,0);
+					\draw[->,black] (0,-0.6*pi) -- (0,1.7*pi);
+					
+					\tkzInit[xmin=-1.5,xmax=1.5,ymin=-pi,ymax=pi]
+					\tkzFct[samples=400,domain = -1:1]{acos(x)}
+				\end{tikzpicture}
+				\caption{\( y = \arccos x \)}
+			\end{figure}
+			\item 反正切函数
+			\begin{figure}[!htb]
+				\centering
+				\begin{tikzpicture}[scale=0.5]
+					\draw[->,black] (-5,0) -- (5,0);
+					\draw[->,black] (0,-0.6*pi) -- (0,0.7*pi);
+					
+					\tkzInit[xmin=-4,xmax=4,ymin=-2,ymax=2]
+					\tkzFct[samples=400,domain = -4.5:4.5]{atan(x)}
+					\foreach \i in {-0.5,0.5}{%
+						\tkzHLine[dashed]{\i*pi}
+					}
+				\end{tikzpicture}
+				\caption{\( y = \arctan x \)}
+			\end{figure}
+			\item 反余切函数
+			\begin{figure}[!htb]
+				\centering
+				\begin{tikzpicture}[scale=0.5]
+					\draw[->,black] (0,-1) -- (0,1.65*pi);
+					\draw[->,black] (-5,0) -- (5,0);
+					\node[below] at (-0.3,0) {\( O \)};
+					\node[below] at (5,0) {\( x \)};
+					\node[left] at (0,1.65*pi) {\( y \)};
+					
+					\tkzInit[xmax=4.8,xmin=-4.8,ymin=0,ymax=pi]
+					\tkzFct[samples=400,domain = -4.8:0]{atan(1/x)+pi}
+					\tkzFct[samples=400,domain = 0:4.8]{atan(1/x)}
+					\tkzHLine[dashed]{pi}
+				\end{tikzpicture}
+				\caption{\( y = \mathrm{arccot}\ x \)}
+			\end{figure}
+		\end{enumerate}
+\end{itemize}
+\chapter{几种常见的曲线}
+
+\end{document}
