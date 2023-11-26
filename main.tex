@@ -18,8 +18,14 @@
 
 % 本文档命令
 \usepackage{tkz-fct}
+\usepackage{ulem}
 \usepackage{array}
 \newcommand{\ccr}[1]{\makecell{{\color{#1}\rule{1cm}{1cm}}}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\arccot}{\mathrm{arccot}}
+\newcommand{\sh}{\mathrm{sh}\ }% 双曲正弦
+\newcommand{\ch}{\mathrm{ch}\ }% 双曲余弦
+\newcommand{\mth}{\mathrm{th}\ }% 双曲正切
 
 % 修改标题页的橙色带
 % \definecolor{customcolor}{RGB}{32,178,170}
@@ -56,53 +62,127 @@
 	\[ R_{f} = f(X) = \{ f(x)\ |\ x \in X\}\].
 \end{definition}
 
-\subsection{本地免安装使用}
+\begin{note}
+	\begin{enumerate}
+		\item 构成映射的{\heiti 三要素}：
+		\begin{enumerate}
+			\item 集合\( X \)，即{\heiti 定义域}\( D_{f} = X \).
+			\item 集合\( Y \)，即{\heiti 值域}的范围\( R_{f} \subset Y \).
+			\item {\heiti 对应法则\( f \)}，使对每个\( x \in X \)，有唯一确定的\( y = f(x) \)与之对应.
+		\end{enumerate}
+		\item 可以一对多，不能多对一：对每个\( x \in X \)，元素\( x \)的像\( y \)是唯一的；而对每个\( y \in R_{f} \)，元素\( y \)的原像不一定是唯一的；映射\( f \)的值域\( R_{f} \)是\( Y \)的一个子集，即\( R_{f} \subset Y \)，不一定\( R_{f} = Y \).
+		\item 映射又称\uwave{算子}，根据\( X \)、\( Y \)的不同情形，在不同的数学分支中，映射又有不同的惯用名称，例如：
+		\begin{enumerate}
+			\item {\heiti 泛函}：从非空集\( X \)到数集\( Y \)的映射又称为\( X \)上的\uwave{泛函}。
+			\item {\heiti 变换}：从非空集\( X \)到它自身的映射又称为\( X \)上的\uwave{变换}。
+			\item {\heiti 函数}：从实数集\( \R \)（或其子集）\( X \)到实数集\( Y \)的映射通常称为定义在\( X \)上的\uwave{函数}。
+		\end{enumerate}
+	\end{enumerate}
+\end{note}
 
-\textbf{免安装}使用方法如下：从 GitHub 或者 CTAN 下载最新版，严格意义上只需要类文件 \lstinline{elegantbook.cls}。然后将模板文件放在你的工作目录下即可使用。这样使用的好处是，无需安装，简便；缺点是，当模板更新之后，你需要手动替换 \lstinline{cls} 文件。
+\begin{definition}[逆映射]
+	设\( f \)是\( X \)到\( Y \)的单射，则由定义，对每个\( y \in R_{f} \)，有唯一的\( x \in X \)，适合\( f(x) y \)。于是，我们可定义一个从\( R_{f} \)到\( X \)的新映射\( g \)，即
+	\[ g: R_{f} \rightarrow X \]
+	对每个\( y \in R_{f} \)，规定\( g(y) = x \)，这\( x \)满足\( f(x) = y \)。这个映射\( g \)称为\( f \)的逆映射，记作\( f^{-1} \)，其定义域\( D_{f^{-1}} = R_{f} \)，值域\( R_{f^{-1}} = X \)。
+\end{definition}
 
-\subsection{发行版安装与更新}
+\begin{note}
+	只有单射才存在逆映射。
+\end{note}
 
-本模板测试环境为 
-\begin{enumerate}
-  \item Win10 + \TeX{} Live 2022；
-  \item Ubuntu 20.04 + \TeX{} Live 2022；
-  \item macOS Monterey + Mac\TeX{} 2022。
-\end{enumerate}
+\begin{definition}[复合映射]
+	设有两个映射
+	\[ g:X \rightarrow Y_{1}, \qquad\qquad f:Y_{2} \rightarrow Z, \]
+	其中\( Y_{1} \subset Y_{2} \)，则由映射\( g \)和\( f \)可以定出一个从\( X \)到\( Z \)的对应法则，它将每个\( x \in X \)映成\( f[g(x)] \in Z \)。显然，这个对应法则确定了一个从\( X \)到\( Z \)的映射，这个映射称为映射\( g \)个\( f \)构成的{\heiti 复合映射}，记作\( f \circ g \)，即
+	\[ f \circ g: X \rightarrow Z,\ (f \circ g)(x) = f[g(x)],\ x \in X \]
+\end{definition}
 
-\TeX Live/Mac\TeX{} 的安装请参考啸行的\href{https://github.com/OsbertWang/install-latex-guide-zh-cn/releases/}{一份简短的关于安装 \LaTeX{} 安装的介绍}。
+\begin{note}
+	\begin{enumerate}
+		\item \textcolor{red}{\( f \circ g \)有意义并不表示\( g \circ f \)也有意义}。
+		\item \heiti 即使\( f \circ g \)与\( g \circ f \)都有意义，复合映射\( f \circ g \)与\( g \circ f \)也未必相同。
+	\end{enumerate}
+\end{note}
 
-安装 \TeX{} Live 之后，安装后建议升级全部宏包，升级方法：使用 cmd 或 terminal 运行 \lstinline{tlmgr update --all}，如果 tlmgr 需要更新，请使用 cmd 运行 \lstinline{tlmgr update --self}，如果更新过程中出现了中断，请改用 \lstinline{tlmgr update --self --all --reinstall-forcibly-removed} 更新，也即
+\subsection{函数}
+\begin{definition}[函数的概念]
+	设数集\( D \subset \R \)，则称映射\( f:D \rightarrow \R \)，为定义在\( D \)上的\uwave{函数}，通常简记为
+	\[ y = f(x),\ x \in D \]
+	其中\( x \)称为\uwave{自变量}，\( y \)称为\uwave{因变量}，\( D \)称为\uwave{定义域}，记作\( D_{f} \)，即\( D_{f} = D \)。
+\end{definition}
 
-\begin{lstlisting}
-tlmgr update --self 
-tlmgr update --all
-tlmgr update --self --all --reinstall-forcibly-removed
-\end{lstlisting}
+\begin{note}
+	\begin{enumerate}
+		\item \( f \)表示自变量\( x \)和因变量\( y \)之间的对应法则，而\( f(x) \)表示自变量\( x \)对应的函数值。
+		\item 可以直接用因变量的记号来表示函数，即把函数记作\( y = y(x) \)。
+		\item 两个函数相同的{\heiti 充分必要条件}是：两个函数的{\heiti 定义域}相同，{\heiti 对应法则}也相同。
+	\end{enumerate}
+\end{note}
 
-更多的内容请参考 \href{https://tex.stackexchange.com/questions/55437/how-do-i-update-my-tex-distribution}{How do I update my \TeX{} distribution?}
+\begin{definition}[函数的有界性]
+	设函数\( f(x) \)的定义域为\( D \)，数集\( X \subset D \)。如果存在数\( K_{1} \)，使得
+	\[ f(x) \leqslant K_{1} \]
+	对任一\( x \in X \)都成立，那么称函数\( f(x) \)在\( X \)上有\uwave{上界}，而\( K_{1} \)称为函数\( f(X) \)在\( X \)上的一个上界。如果存在数\( K_{2} \)，使得
+	\[ f(x) \geqslant K_{2} \]
+	对任一\( x \in X \)都成立，那么称函数\( f(x) \)在\( X \)上有\uwave{下界}，而\( K_{2} \)称为函数\( f(x) \)在\( X \)上的一个下界。如果存在正数\( M \)，使得
+	\[ |\ f(x)\ | \leqslant M \]
+	对任一\( x \in X \)都成立，那么称函数\( f(x) \)在\( X \)上有界。如果这样的\( M \)不存在，就称函数\( f(x) \)在\( X \)上无界；这就是说，如果对于任何正数\( M \)，总存在\( x_{1} \in X \)，使\( |\ f(x_{1})\ | > M \)，那么函数\( f(x) \)在\( X \)上无界。
+\end{definition}
 
-\subsection{其他发行版本}
+\begin{note}
+	函数\( f(x) \)在\( X \)上有界的{\heiti 充分必要条件}是它在\( X \)上\uwave{既有上界又有下界}。
+\end{note}
 
-由于宏包版本问题，本模板不支持 C\TeX{} 套装，请务必安装 TeX Live/Mac\TeX{}。更多关于 \TeX{} Live 的安装使用以及 C\TeX{} 与 \TeX{} Live 的兼容、系统路径问题，请参考官方文档以及啸行的\href{https://github.com/OsbertWang/install-latex-guide-zh-cn/releases/}{一份简短的关于安装 \LaTeX{} 安装的介绍}。
-
-
-\section{关于提交}
-
-出于某些因素的考虑，Elegant\LaTeX{} 项目自 2019 年 5 月 20 日开始，\textbf{不再接受任何非作者预约性质的提交}（pull request）！如果你想改进模板，你可以给我们提交 issues，或者可以在遵循协议（LPPL-1.3c）的情况下，克隆到自己仓库下进行修改。
-
-
-\chapter{ElegantBook 设置说明}
-
-本模板基于基础的 book 文类，所以 book 的选项对于本模板也是有效的（纸张无效，因为模板有设备选项）。默认编码为 UTF-8，推荐使用 \TeX{} Live 编译。
-
-\section{语言模式}
-本模板内含两套基础语言环境 \lstinline{lang=cn}、\lstinline{lang=en}。改变语言环境会改变图表标题的引导词（图，表），文章结构词（比如目录，参考文献等），以及定理环境中的引导词（比如定理，引理等）。不同语言模式的启用如下：
-
+\begin{definition}[函数的单调性]
+	设函数\( f(x) \)的定义域为\( D \)，区间\( I \subset D \)。如果对于区间
+\end{definition}
 
 % 附录
 \appendix
+\renewcommand{\thechapter}{\Roman{chapter}}% 修改附录编号样式为罗马数字
+\chapter{常用的麦克劳林(Maclaurin)公式(佩亚洛余项)}
+\begin{enumerate}
+	\item \[ e^{x} = 1 + x + \dfrac{x^{2}}{2!} + \cdots + \dfrac{x^{n}}{n!} + o(x^{n}) \]
+	\item \[ \sin x = x - \dfrac{x^{3}}{3!} + \dfrac{x^{5}}{5!} - \dfrac{x^{7}}{7!} + \cdots + (-1)^{n}\dfrac{x^{2n + 1}}{(2n + 1)!} + o(x^{2n + 2}) \]
+	\item \[ \cos x = 1 - \dfrac{x^{2}}{2!} + \dfrac{x^{4}}{4!} - \dfrac{x^{6}}{6!} + \cdots + (-1)^{n}\dfrac{x^{2n}}{(2n)!} + o(x^{2n + 1}) \]
+	\item \[ \ln(1 + x) = x - \dfrac{x^{2}}{2} + \dfrac{x^{3}}{3} - \dfrac{x^{4}}{4} + \cdots + (-1)^{n}\dfrac{x^{n + 1}}{n + 1} + o(x^{n + 1}) \]
+	\item \[ \dfrac{1}{1 - x} = 1 + x + x^{2} + \cdots +x^{n} + o(x^{n}) \]
+	\item \[ (1 + x)^{\alpha} = 1 + \alpha x + \dfrac{\alpha(\alpha - 1)}{2!}x^{2} + \cdots + \dfrac{\alpha(\alpha - 1)\cdots(\alpha - n + 1)}{n!}x^{n} + o(x^{n}) \]
+	\item \[ \arcsin x = x + \dfrac{1}{6}x^{3} + o(x^{3}) \]
+	\item \[ \arctan x = x - \dfrac{1}{3}x^{3} + o(x^{3}) \]
+\end{enumerate}
 \chapter{常用的导数公式}
-
+\begin{enumerate}
+	\item \( (\ C\ )' = 0 \).
+	\item \( (\ x^{\mu}\ )' = \mu x^{\mu - 1} \).
+	\item \( (\ \sin x\ )' = \cos x \).
+	\item \( (\ \cos x \ )' = -\sin x \).
+	\item \( (\ \tan x \ )' = \sec^{2}x \).
+	\item \( (\ \cot x \ )' = -\csc^{2}x \).
+	\item \( (\ \sec x \ )' = \sec x \cdot \tan x \).
+	\item \( (\ \csc x \ )' = -\csc x \cdot \tan x \).
+	\item \( (\ a^{x}\ )' = a^{x}\ln a\quad(a > 0, a\neq0) \).
+	\item \( (\ e^{x}\ )' = e^{x} \).
+	\item \( (\ \log^{a}x\ )' = \dfrac{1}{x\ln a}\quad(a>0,a\neq 1) \).
+	\item \( (\ \ln x\ )' = \dfrac{1}{x},\quad (\ \ln |x|\ )' = \dfrac{1}{x} \).
+	\item \[ (\ \arcsin x\ )' = \dfrac{1}{1 - x^{2}} \].
+	\item \[ (\ \arccos x\ )' = -\dfrac{1}{1 - x^{2}} \].
+	\item \[ (\ \arctan x\ )' = \dfrac{1}{1 + x^{2}} \].
+	\item \[ (\ \arccot\ x\ )' = -\dfrac{1}{1 +x^{2}} \].
+	\item \[ (\ \ln |\sin x| + C\ )' = \cot x \].
+	\item \[ (\ -\ln |\cos x|+ C\ )' = \tan x \].
+	\item \[ \ln \left(x + \sqrt{a^{2} + x^{2}}\right) \].
+	\item \[ (\ \ln |\sec x + \tan x|\ )' = \sec x \].
+	\item \[ (\ \ln |\csc x - \cot x|\ )' = \csc x \].
+	\item \[ (\ \sqrt{a^{2} + x^{2}} \ )' = \dfrac{x}{\sqrt{a^{2} + x^{2}}} \].
+	\item \[ (\ \sqrt{a^{2} - x^{2}} \ )' = \dfrac{x}{\sqrt{a^{2} - x^{2}}} \].
+	\item \( (\ \ch x + C \ )' = \sh x \).
+	\item \( (\ \sh x + C \ )' = \ch x \).\\
+	\begin{remark}
+		\[ \text{双曲正弦：} \sh x = \dfrac{e^{2} - e^{2}}{2} \] \\
+		\[ \text{双曲余弦：} \ch x = \dfrac{e^{2} + e^{2}}{2} \]
+	\end{remark}
+\end{enumerate}
 \chapter{常用的三角函数公式}
 \begin{enumerate}
 	\item 常用三角函数关系
@@ -117,17 +197,78 @@ tlmgr update --self --all --reinstall-forcibly-removed
 	\begin{enumerate}
 		\item 
 		\( \begin{array}{ll}
-			\sin(2k\pi + \alpha) = \sin \alpha & \cos(2k\pi + \alpha) = \cos \alpha \\
-			\tan(2k\pi + \alpha) = \tan \alpha & \cot(2k\pi + \alpha) = \cot \alpha \\
+			\sin(2k\pi \pm \alpha) =\pm \sin \alpha & \cos(2k\pi \pm \alpha) = + \cos \alpha \\
+			\tan(2k\pi \pm \alpha) =\pm \tan \alpha & \cot(2k\pi\pm \alpha) = \pm \cot \alpha \\
 		\end{array}
 		\)
 		\item 
 		\(
 			\begin{array}{ll}
-				\sin(\pi + \alpha) = -\sin \alpha & \cos(\pi + \alpha) = -\cos \alpha \\
-				\tan(\pi + \alpha) = \tan \alpha &	\cot(\pi + \alpha) = \cot \alpha \\		
+				\sin(\pi \pm \alpha) =  \mp \sin \alpha & \cos(\pi \pm \alpha) = - \cos \alpha \\
+				\tan(\pi \pm \alpha) = \pm \tan \alpha & \cot(\pi \pm \alpha) = \pm \cot \alpha \\		
 			\end{array}
 		\)
+		\item
+		\(
+			\begin{array}{ll}
+				\sin(-\alpha) = -\sin\alpha & \cos(-\alpha) = \cos\alpha \\
+				\tan(-\alpha) = -\tan\alpha & \cot(-\alpha) = -\cot \alpha \\
+			\end{array}
+		\)
+		\begin{remark}
+			三角函数的{\heiti 奇偶性}
+		\end{remark}
+		\item 
+		\(
+			\begin{array}{ll}
+				\sin(\frac{\pi}{2} \pm \alpha) = + \cos\alpha & \cos(\frac{\pi}{2} \pm \alpha) = \mp \sin \alpha \\
+				\tan(\frac{\pi}{2} \pm \alpha) = \mp \cot\alpha & \cot(\frac{\pi}{2} \pm \alpha) = \mp\tan\alpha \\
+			\end{array}
+		\)
+	\end{enumerate}
+	\item 二角和差公式
+	\begin{enumerate}
+		\item \( \cos (\alpha \pm \beta) = \cos\alpha\cdot\cos\beta \mp \sin\alpha\cdot\sin\beta \).
+		\item \( \sin(\alpha \pm \beta) = \sin\alpha\cdot\cos\beta \mp \cos\alpha\cdot\sin\beta \).
+		\item \( \tan(\alpha \pm \beta) = \displaystyle\dfrac{\tan\alpha \pm \tan\beta}{1 \mp \tan\alpha\cdot\tan\beta} \).
+	\end{enumerate}
+	\item 积化和差公式
+	\begin{enumerate}
+		\item \( \sin\alpha\cdot\cos\beta = \frac{1}{2}[\sin(\alpha + \beta) + \sin(\alpha - \beta)] \).
+		\item \( \cos\alpha\cdot\sin\beta = \frac{1}{2}[\sin(\alpha + \beta) - \sin(\alpha - \beta)] \).
+		\item \( \cos\alpha\cdot\cos\beta = \frac{1}{2}[\cos(\alpha + \beta) + \cos(\alpha - \beta)] \).
+		\item \( \sin\alpha\cdot\sin\beta = -\frac{1}{2}[\cos(\alpha + \beta) - \cos(\alpha - \beta)] \).
+	\end{enumerate}
+	\item 和差化积公式
+	\begin{enumerate}
+		\item \( \sin\alpha + \sin\beta = 2\sin\dfrac{\alpha + \beta}{2} \cdot \cos\dfrac{\alpha - \beta}{2} \).
+		\item \( \sin\alpha - \sin\beta = 2\cos\dfrac{\alpha + \beta}{2} \cdot \sin\dfrac{\alpha - \beta}{2} \).
+		\item \( \cos\alpha + \cos\beta = 2\cos\dfrac{\alpha + \beta}{2} \cdot \cos\dfrac{\alpha + \beta}{2} \).
+		\item \( \cos\alpha - \cos\beta = -2\sin\dfrac{\alpha + \beta}{2} \cdot \cos\dfrac{\alpha - \beta}{2} \).
+	\end{enumerate}
+	\item 二倍角公式
+	\begin{enumerate}
+		\item \( \sin 2\alpha = 2\sin\alpha \cdot \cos \beta \).
+		\item \( \cos2\alpha = \cos^{2}\alpha - \sin^{2}\alpha = 2\cos^{2}\alpha - 1 = 1 - \sin^{2}\alpha \).
+		\item \( \displaystyle\tan2\alpha = \dfrac{2\tan\alpha}{1 - \tan^{2}\alpha} \).
+	\end{enumerate}
+	\item 降幂公式
+	\begin{enumerate}
+		\item \( \cos^{2}\alpha = \frac{1}{2}(1 + \cos2\alpha) \).
+		\item \( \sin^{2}\alpha = \frac{1}{2}(1 - \cos2\alpha) \).
+	\end{enumerate}
+	\item 半角公式
+	\begin{enumerate}
+		\item \( \tan\frac{\alpha}{2} = \dfrac{\sin\alpha}{1 + \cos\alpha} = \dfrac{1 - \cos\alpha}{\sin\alpha} = \pm \sqrt{\dfrac{1 - \cos\alpha}{1 + \cos\alpha}} \).
+		\item \( \displaystyle \cot\frac{\alpha}{2} = \frac{1}{\tan\alpha} \).
+	\end{enumerate}
+	\item 辅助角公式
+	\[  a\sin\alpha \pm b\cos\alpha = \sqrt{a^{2} + b^{2}}\sin(\alpha \pm \varphi),\ \tan\varphi = \frac{b}{a}\].
+	\item 万能公式
+	\begin{enumerate}
+		\item \[ \sin\alpha = \dfrac{2\tan\dfrac{\alpha}{2}}{1 + \tan^{2}\dfrac{\alpha}{2}} \].
+		\item \[ \cos\alpha = \dfrac{1 - \tan^{2}\dfrac{\alpha}{2}}{1 + \tan^{2}\dfrac{\alpha}{2}} \].
+		\item \[ \tan\alpha= \dfrac{2\tan\dfrac{\alpha}{2}}{1 - \tan^{2}\dfrac{\alpha}{2}}\].
 	\end{enumerate}
 \end{enumerate}
 \chapter{基本初等函数的图形}
@@ -136,8 +277,13 @@ tlmgr update --self --all --reinstall-forcibly-removed
 		\begin{figure}[!htb]
 			\centering
 			\begin{tikzpicture}[scale=1.5]
-				\draw[->,black] (0,0) -- (3,0);
-				\draw[->,black] (0,0) -- (0,3);
+				\draw[->,black] (0,0) -- (2.5,0);
+				\node[below] at (2.5,0) {\( x \)};
+				\draw[->,black] (0,0) -- (0,2.5);
+				\node[left] at (0,2.5) {\( y \)};
+				\node[left] at (0,0) {\( O \)};
+				\node[left] at (0,1) {\( 1 \)};
+				\node[below] at (1,0) {\( 1 \)};
 				
 				\tkzInit[xmax=2, ymax=2]
 				\tkzHLine{2}
@@ -159,8 +305,15 @@ tlmgr update --self --all --reinstall-forcibly-removed
 			\end{tikzpicture}
 			\qquad\qquad
 			\begin{tikzpicture}[scale=1.5]
-				\draw[->,black] (0,0) -- (3,0);
-				\draw[->,black] (0,0) -- (0,3);
+				\draw[->,black] (0,0) -- (2.5,0);
+				\node[below] at (2.5,0) {\( x \)};
+				\draw[->,black] (0,0) -- (0,2.5);
+				\node[left] at (0,2.5) {\( y \)};
+				\draw[dashed,black] (0,1) -- (1,1);
+				\draw[dashed,black] (1,0) -- (1,1);
+				\node[left] at (0,0) {\( O \)};
+				\node[left] at (0,1) {\( 1 \)};
+				\node[below] at (1,0) {\( 1 \)};
 				
 				\tkzInit[xmax=2,ymax=2]
 				\tkzFct[samples=400,domain=0.1:2]{x**(-1./3)}
@@ -170,9 +323,6 @@ tlmgr update --self --all --reinstall-forcibly-removed
 				\tkzFct[samples=400,domain=0.5:2]{x**(-3)}
 				\tkzVLine{2}
 				\tkzHLine{2}
-				
-				\draw[thick,black,dashed] (0,1) -- (1,1);
-				\draw[thick,black,dashed] (1,0) -- (1,1);
 			\end{tikzpicture}
 			\caption{\( y=x^{\mu} \)}
 		\end{figure}
@@ -409,6 +559,8 @@ tlmgr update --self --all --reinstall-forcibly-removed
 				\caption{\( y = \mathrm{arccot}\ x \)}
 			\end{figure}
 		\end{enumerate}
+		
+				
 \end{itemize}
 \chapter{几种常见的曲线}
 
