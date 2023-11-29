@@ -1,6 +1,6 @@
 \documentclass[lang=cn,10pt]{elegantbook}
 
-\title{高等数学笔记：基于 \LaTeX{} 的个人知识总结}
+\title{高等数学：基于 \LaTeX{} 的个人知识总结}
 \subtitle{Advanced Math Notes: Based on \LaTeX{}}
 
 \author{彭正萧 \& PENG Zhengxiao}
@@ -20,6 +20,11 @@
 \usepackage{tkz-fct}
 \usepackage{ulem}
 \usepackage{array}
+\usepackage{enumitem}
+\usepackage{circledsteps}
+\usepackage{mathtools}
+
+
 \newcommand{\ccr}[1]{\makecell{{\color{#1}\rule{1cm}{1cm}}}}
 \newcommand{\R}{\mathbb{R}}
 \newcommand{\arccot}{\mathrm{arccot}}
@@ -40,13 +45,17 @@
 
 \maketitle
 \frontmatter
-
 \tableofcontents
-
 \mainmatter
 
-\chapter{函数与极限}
 
+
+\chapter{函数与极限}
+\begin{introduction}
+	\item 你是谁
+	\item 我是谁
+	\item 我不知道
+\end{introduction}
 \section{映射与函数}
 
 本节主要介绍映射、函数及有关概念，函数的性质与运算等。
@@ -134,8 +143,276 @@
 \end{note}
 
 \begin{definition}[函数的单调性]
-	设函数\( f(x) \)的定义域为\( D \)，区间\( I \subset D \)。如果对于区间
+	设函数\( f(x) \)的定义域为\( D \)，区间\( I \subset D \)。如果对于区间\( I \)上任意两点\( x_{1} \)及\( x_{2} \)，当\( x_{1} < x_{2} \)时，恒有
+	\[ f(x_{1}) < f(x_{2}) \]
+	那么称函数\( f(x) \)在区间\( I \)上是\uwave{单调增加}的；如果对于区间\( I \)上任意两点\( x_{1} \)及\( x_{2} \)，当\( x_{1} < x_{2} \)时，恒有
+	\[ f(x_{1}) > f(x_{2}) \]
+	那么称函数\( f(x) \)早区间\( I \)上是\uwave{单调减少}的。单调增加和单调减少的函数统称为\uwave{单调函数}。
 \end{definition}
+
+\begin{note}
+	如果函数\( f(x) \)在其定义域\( D \)的两个真子集\( A \)和\( B \)内单调性相同，并且\( A \cap B = \emptyset \)，在描述函数单调性的时候，不能说函数\( y=f(x) \)在\( A \cup B \)内单调增加（或单调减少），而应该说函数\( y = f(x) \)在\( A \)和\( B \)内单调增加（或单调减少）。
+\end{note}
+
+\begin{definition}[函数的奇偶性]
+	设函数\( f(x) \)的定义域\( D \)关于原点对称，如果对于任一\( x \in D \)
+	\[ f(-x) = f(x) \]
+	恒成立，那么称\( f(x) \)为\uwave{偶函数}。如果对于任一\( x \in D \)
+	\[ f(-x) = -f(x) \]
+	恒成立，那么称\( f(x) \)为\uwave{奇函数}
+\end{definition}
+
+\begin{definition}[函数的周期性]
+	设函数\( f(x) \)的定义域为\( D \)。如果存在一个正数\( I \)，使得对于任一\( x \in D \)有\( (x \pm l) \in D \)，且
+	\[ f(x + l) = f(x) \]
+	恒成立，那么称\( f(x) \)为\uwave{周期函数}，\( l \)称为\( f(x) \)的\uwave{周期}，通常我们说周期函数的周期是指\uwave{最小正周期}
+\end{definition}
+
+\begin{note}
+	周期函数在每个长度为\( l \)的区间上，函数图形有相同的形状。
+\end{note}
+
+\begin{definition}[反函数]
+	设函数\( f : D \rightarrow f(D) \)是单射，则它存在逆映射\( f^{-1}:f(D) \rightarrow D \)，称此映射\( f ^{-1} \)为函数\( f \)的\uwave{反函数}。\\
+	则对每个\( y \in f(D) \)，有唯一的\( x \in D \)，使得\( f(x) = y \)，于是有
+	\[ f^{-1}(y) = x \]
+	这就是说，反函数\( f^{-1} \)的对应法则是完全由函数\( f \)的对应法则所确定的。
+\end{definition}
+
+\begin{note}
+	\begin{enumerate*}[label=\Circled{\arabic*}]
+		\item \( y = f(x) \);\quad
+		\item \( x = f^{-1}(y) \);\quad
+		\item \( y = f^{-1}(x) \).
+	\end{enumerate*}\\
+	\Circled{1}与\Circled{2}的函数图像相同，而\Circled{1}与\Circled{3}（或\Circled{2}与\Circled{3}）的函数图像关于直线\( y = x \)对称。
+\end{note}
+\begin{remark}
+	相对于反函数\( y=f^{-1}(x) \)来说，原来的函数\( y = f(x) \)称为\uwave{直接函数}，而不是``原函数''。
+\end{remark}
+
+\begin{definition}[复合函数]
+	设函数\( y=f(u) \)的定义域\( D_{f} \)，函数\( u=g(x) \)的定义域\( R_{g} \subset D_{f} \)，则由下式确定的函数
+	\[ y = f[\ g(x)\ ],\qquad x \in D_{g} \]
+	称为由函数\( u = g(x) \)与函数\( y = f(u) \)构成的\uwave{复合函数}，它的定义域为\( D_{g} \)，变量\( u \)称为\uwave{中间变量}。
+	函数\( g \)与函数\( f \)的复合函数，即按``先\( g \)后\( f \)''的次序复合的函数，通常记为\( f \circ g \)，即
+	\[ (f \circ g)(x) = f[\ g(x)\ ] \]
+\end{definition}
+
+\begin{note}
+	\( g \)与\( f \)能构成符合函数\( f \circ g \)的条件是：\uwave{函数\( g \)的值域\( R_{g} \)必须包含于函数\( f \)的定义域\( D_{f} \)，即\( R_{f} \subset D_{f} \)。\\否则，不能构成复合函数}。
+\end{note}
+
+\begin{definition}[初等函数]
+	由常数和基本初等函数经过有限次的四则运算和有限次的函数复合步骤所构成并可用\uwave{一个式子}表示的函数，称为\uwave{初等函数}
+\end{definition}
+
+\begin{note}
+	基本初等函数：
+	\begin{enumerate}
+		\item 幂函数：\( y = x^{\mu}\quad (\mu \in \R\text{是常数}) \).
+		\item 指数函数：\( y = a^{x}\quad (a > 0 \text{且}a \neq 1) \).
+		\item 对数函数：\( y = \log_{a}x\quad (a > 0 \text{且}a \neq 1,\ \text{特别当}a = e\text{时},\ \text{记为}y = \ln x) \).
+		\item 三角函数：如\( y = \sin x,\ y = \cos x,\ y = \tan x \)等.
+		\item 反三角函数：如\( y = \arcsin x,\ y = \arccos x,\ y = \arctan x \)等.
+	\end{enumerate}
+\end{note}
+
+\begin{remark}
+	非初等函数一般为分段函数。
+\end{remark}
+
+\section{数列的极限}
+\subsection{数列极限的定义}
+
+\begin{definition}[数列极限]
+	设\( \{x_{n}\} \)为一数列，如果存在常数\( a \)，对于任意给定的正数\( \varepsilon \)（不论它多么小），总存在正整数\( N \)，使得当\( n > N \)时，不等式
+	\[ | x_{n} - a | < \varepsilon \]
+	都成立，那么就称常数\( a \)是\uwave{数列}\( \{x_{n}\} \)\uwave{的极限}，或者称数列\( \{x_{n}\} \)\uwave{收敛于}\( a \)，记为
+	\[ \lim_{n \to \infty}x_{n} = a \]
+	或
+	\[ x_{n} \rightarrow a\quad( n \to \infty) \]
+	如果不存在这样的常数\( a \)，就说数列\( \{x_{n}\} \)没有极限，或者说数列\( \{x_{n}\} \)是\uwave{发散数列}，习惯上也说\( \lim\limits_{n \to \infty}x_{n} \)不存在。
+\end{definition}
+
+\begin{note}
+	\begin{enumerate}
+		\item 正数\( \varepsilon \)可以任意给定意味着不等式\( | x_{n} - a | < \varepsilon \)表达出\( x_{n} \)与\( a \)\uwave{无限接近}的意思.
+		\item \( \lim\limits_{n \to \infty} = a \Leftrightarrow \forall \varepsilon > 0 , \exists \textbf{正整数}N,\textbf{当}n>N,有|x_{n} - a| < \varepsilon \).
+	\end{enumerate}
+\end{note}
+
+\subsection{收敛数列的性质}
+\begin{theorem}[极限的唯一性]
+	如果数列\( \{x_{n}\} \)收敛，那么它的极限唯一.
+\end{theorem}
+
+\begin{remark}
+	用\uwave{反证法}证明.
+\end{remark}
+
+\begin{theorem}[收敛数列的有界性]
+	如果数列\( \{x_{n}\} \)收敛，那么数列\( \{x_{n}\} \)一定有界.
+\end{theorem}
+
+\begin{theorem}[收敛数列的保号性]
+	如果\( \lim\limits_{n \to \infty} x_{n} = a \)，且\( (a > 0) \)（或\( a < 0 \)），那么存在正整数\( N \)，当\( n > N \)时，都有\( x_{n} > 0 \)（或\( x_{n} < 0 \)）.
+\end{theorem}
+
+\begin{corollary}
+	如果数列\( \{x_{n}\} \)从某项起有\( x_{n} \geqslant 0 \)（或\( x_{n} \leqslant 0 \)），且\( \lim\limits_{n \to \infty} x_{n} = a \)，那么\( a \geqslant 0 \)（或\(  a \leqslant 0 \)）.
+\end{corollary}
+
+\begin{theorem}[收敛数列与其子数列间的关系]
+	如果数列\( \{x_{n}\} \)收敛于\( a \)，那么它的任一子数列也收敛，且极限也是\( a \).
+\end{theorem}
+
+\section{函数的极限}
+\subsection{函数极限的定义}
+
+\begin{definition}[函数极限]
+	\label{def:fctlim1}
+	设函数\( f(x) \)在点\( x_{0} \)的某一去心领域内有定义。如果存在常数\( A \)，对于任意给定的正数\( \varepsilon \)（不论它多么小），总存在正整数\( \delta \)，使得当\( x \)满足不等式\( 0 < |x - x_{0}| < \delta \)时，对应的函数值\( f(x) \)都满足不等式
+	\[ |f(x) - A| < \varepsilon \]
+	那么常数\( A \)就叫做\uwave{函数\( f(x) \)当\( x \to x_{0} \)时的极限}，记作
+	\[ \lim_{x \to x_{0}}f(x) = A\quad \text{或} f(x) \rightarrow A\quad (\text{当}x \rightarrow x_{0}) \]
+\end{definition}
+
+\begin{note}
+	\begin{enumerate}
+		\item 定义\ \ref{def:fctlim1}\ 可以简单地表述为：
+		\( \lim\limits_{n \to x_{0}}f(x) = A \Leftrightarrow \forall \delta > 0,\text{当}0<|x - x_{0}|<\delta \text{时},\text{有}|f(x) - A| < \delta \).
+		\item 定义中\( 0 < |x - x_{0}| \)表示\( x \neq x_{0} \)，所以\( x \to x_{0} \)时\( f(x) \)没有极限，与\( f(x) \)在点\( x_{0} \)是否有定义并无关系.
+		\item 左右极限：
+		\begin{enumerate}
+			\item 左极限：在\( \lim\limits_{x \to x_{o}}f(x) = A \)的定义中，把\( 0 < |x - x_{0}| < \delta \)改为\( x_{0} - \delta < x < x_{0} \)，那么\( A \)就叫做函数\( f(x) \)当\( x \to x_{0} \)时的\uwave{左极限}，记作
+			\[ \lim_{x \to x_{0}^{-}}f(x) = A \quad \text{或} \quad f(x_{0}^{-}) = A \]
+			\item 右极限：类似地，在\( \lim\limits_{x \to x_{o}}f(x) = A \)的定义中，把\( 0 < |x - x_{0}| < \delta \)改为\( x_{0} < x < x_{0} + \delta \)，那么\( A \)就叫做函数\( f(x) \)当\( x \to x_{0} \)时的\uwave{右极限}，记作
+			\[ \lim_{x \to x_{0}^{+}}f(x) = A \quad \text{或} \quad f(x_{0}^{+}) = A \]
+			\item 左极限与右极限统称为\uwave{单侧极限}.
+		\end{enumerate}
+		\item 函数\( f(x) \)当\( x \to x_{0} \)时极限存在的{\heiti 充分必要条件}是左极限及右极限\uwave{各自存在并且相等}，即
+		\[ f(x_{0}^{-}) = f(x_{0}^{+}) \]
+	\end{enumerate}
+\end{note}
+
+\begin{definition}[函数极限]
+	\label{def:fctlim2}
+	设函数\( f(x) \)当\( |x| \)大于某一正数时有定义.如果存在常数\( A \)，对于任意给定的正数\( \varepsilon \)（不论它多么小），总存在着正数\( X \)，使得当\( x \)满足不等式\( |x| > X \)时，对应的函数值\( f(x) \)都满足不等式
+	\[ |f(x) - A| < \varepsilon \]
+	那么常数\( A \)就叫做\uwave{函数\( f(x) \)当\( x \to \infty \)时的极限}，记作
+	\[ \lim\limits_{x \to \infty}f(x) = A \quad \text{或} \quad f(x) \to A\quad(\text{当}x \to \infty) \]
+\end{definition}
+
+\begin{note}
+	\begin{enumerate}
+		\item 定义 \ref{def:fctlim2} 可以简单地表述为：\( \lim\limits_{x \to \infty}f(x) = A \Leftrightarrow \forall \varepsilon > 0, \exists X > 0,\text{当}|x|>X\text{时},\text{有}|f(x) - A| < \varepsilon \)
+		\item 如果\( x > 0 \)且无限增大（记作\( x \to +\infty \)），那么只要把定义 \ref{def:fctlim2} 中的\( |x| > X \)改为\( x > X \)，就可以得\( \lim\limits_{x \to +\infty}f(x) = A \)的定义.
+		\item 同样，如果\( x < 0 \)且\( |x| \)无限增大（记作\( x \to -\infty \)），那么只要把\( |x| > X \)改为\( x < -X \)，便得\( \lim\limits_{x \to -\infty} = A \)的定义.
+		\item 从几何上来说，\( \lim\limits_{x \to \infty}f(x) = A \)的意义是：作直线\( y = A - \varepsilon\ \text{和}\ y = A + \varepsilon \)，则总有一个正数\( X \)存在，使得当\( x < -X\ \text{或}\ x > X \)时，函数\( y = f(x) \)的图形位于这两条直线之间.这时，直线\( y = A \)是函数\( y = f(x) \)的图形的\uwave{水平渐近线}.
+	\end{enumerate}
+\end{note}
+
+\subsection{函数极限的性质}
+
+\begin{theorem}[唯一性]
+	如果\( \lim\limits_{x \to x_{0}}f(x) \)存在，那么这极限唯一.
+\end{theorem}
+\begin{theorem}[局部有界性]
+	如果\( \lim\limits_{x \to x_{0}}f(x) = A \)，那么存在常数\( M > 0 \)和\( \sigma > 0 \)，使得当\( 0 < |x = x_{0}| < \sigma \)时，有\( |f(x)| \leqslant M \).
+\end{theorem}
+\begin{theorem}[局部保号性]
+	如果\( \lim\limits_{x \to x_{0}}f(x) = A \)，且\( A > 0 \)（或\( A < 0 \)），那么存在常数\( \sigma > 0 \)，使得当\( 0 < |x = x_{0}| < \sigma \)时，有\( f(x) > 0 \)（或\( f(x) < 0 \)）.
+\end{theorem}
+
+
+
+
+
+
+
+
+
+\chapter{导数与微分}
+
+\begin{problemset}[错题集]
+	\item 你是谁\adftripleflourishright
+\end{problemset}
+
+\begin{conclusion}
+	我是IKun.
+\end{conclusion}
+
+\begin{assumption}
+	我不是IKun.
+\end{assumption}
+
+\begin{property}
+	你是谁呀
+\end{property}
+
+\begin{solution}
+	你是谁
+\end{solution}
+
+\begin{example}
+	你是谁
+\end{example}
+
+\begin{problem}
+	你是谁呀
+\end{problem}
+
+\begin{exercise}
+	你是谁
+\end{exercise}
+
+\begin{theorem}
+	你是谁
+\end{theorem}
+
+\begin{lemma}
+	你是谁
+\end{lemma}
+
+\begin{corollary}
+	你是谁
+\end{corollary}
+
+\begin{axiom}
+	你是谁
+\end{axiom}
+
+
+
+
+
+
+
+
+\chapter{微分中值定理与导数的应用}
+
+
+
+\chapter{不定积分}
+
+
+\chapter{定积分}
+
+
+
+
+\chapter{定积分的应用}
+
+
+
+\chapter{微分方程}
+
+
+
+
+
+
 
 % 附录
 \appendix
