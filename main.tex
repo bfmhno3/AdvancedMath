@@ -325,8 +325,158 @@
 	如果\( \lim\limits_{x \to x_{0}}f(x) = A \)，且\( A > 0 \)（或\( A < 0 \)），那么存在常数\( \delta > 0 \)，使得当\( 0 < |x - x_{0}| < \delta \)时，有\( f(x) > 0 \)（或\( f(x) < 0 \)）.
 \end{theorem}
 
+\begin{theorem}
+	如果\( \lim\limits_{x \to x _{0}}f(x) = A\ (A \neq 0) \)，那么就存在着\( x_{0} \)的某一去心领域\( \mathring{U}(x_{0}) \)，当\( x \in \mathring{U}(x_{0}) \)时，就有\( |f(x) | > \dfrac{|A|}{2} \)
+\end{theorem}
 
+\begin{corollary}
+	如果在\( x_{0} \)的去心领域内\( f(x) \geqslant 0 \)或（\( f(x) \leqslant 0 \)），而且\( \lim\limits_{x \to x_{0}}f(x) = A \)，那么\( A \geqslant 0 \)（或\( A \leqslant 0 \)）.
+\end{corollary}
 
+\begin{theorem}[函数极限与数列极限的关系]
+	如果极限\( \lim\limits_{x \to x_{0}}f(x) \)存在，\( |x_{n}| \)为函数\( f(x) \)的定义域内任一收敛于\( x_{0} \)的数列，且满足：\( x_{n} \neq x_{0}\ (n \in N) \)，那么相应的函数值数列\( \{f(x_{n})\} \)必收敛，且\( \lim\limits_{n \to \infty}f(x_{n}) = \lim\limits_{x \to x_{0}}f(x) \).
+\end{theorem}
+
+\begin{note}
+	所有定义的使用条件可以替换为\( x \to * \)，即\\
+	\[ x \to x_{0} \Leftrightarrow x \to *,\ \text{其中}* \Rightarrow
+	\begin{cases*}
+		x_{0} \Rightarrow \begin{cases*}
+			x_{0}^{+} \\
+			x_{0}^{-} \\
+		\end{cases*} \\
+		\infty \Rightarrow \begin{cases*}
+			-\infty \\
+			+\infty \\
+		\end{cases*} \\
+	\end{cases*} \]
+\end{note}
+
+\section{无穷小与无穷大}
+\subsection{无穷小}
+
+\begin{definition}[无穷小]
+	如果函数\( f(x) \)当\( x \to x_{0} \)（或\( x \to \infty \)）时的极限为零，那么称函数\( f(x) \)为当\( x \to x_{0} \)（或\( x \to \infty \)时的无穷小.
+	特别地，以零为极限的数列\( \{x_{n}\} \)称为\( n \to \infty \)时的无穷小.
+\end{definition}
+
+\begin{note}
+	无穷小
+	\( \begin{cases}
+		\text{常数函数：}0. \\
+		\text{以零为极限的函数（或数列）}. \\
+	\end{cases} \)
+\end{note}
+
+\begin{theorem}
+	在自变量的同一变化过程\( x \to x_{0} \)（或\( x \to \infty \)）中，函数\( f(x) \)具有极限\( A \)的{\heiti 充分必要条件}是\( f(x) = A + \alpha \)，其中\( \alpha \)是无穷小.
+\end{theorem}
+
+\subsection{无穷大}
+
+\begin{definition}[无穷大]
+	设函数\( f(x) \)在\( x_{0} \)的某一去心领域内有定义（或\( |x| \)大于某一正数时有定义）.如果对于任意给定的正数\( M \)（不论它多么大），总存在正数\( \delta \)（或正数\( X \)），只要\( x \)适合不等式\( 0 < | x - x_{0} | < \delta \)（或\( |x| > X \)），对应的函数值\( f(X) \)总满足不等式
+	\[ | f(x) | > M \]
+	那么称函数\( f(x) \)是当\( x \to x_{0} \)（或\( x \to \infty \)）时的无穷大.
+\end{definition}
+
+\begin{note}
+	\begin{enumerate}
+		\item 无穷大与无界的比较：
+		\[ \begin{array}{ll}
+			\text{无穷大：} & \forall M > 0,\ x \to *,\ |f(x)| > M. \\
+			\text{无界：}   & \forall M > 0,\ \exists x_{0} \in D,\ |f(x_{0})| > M. \\
+		\end{array} \]
+		\item 极限不存在的常见情况：
+		\begin{enumerate}
+			\item 无界函数.
+			\item 有界函数但是极限不存在，例：\( y = \sin x \).
+		\end{enumerate}
+	\end{enumerate}
+\end{note}
+
+\begin{theorem}
+	在自变量的同一变化过程中，如果\( f(x) \)为无穷大，那么\( \dfrac{1}{f(x)} \)为无穷小，反之，如果\( f(x) \)为无穷小，且\( f(x) \neq 0 \)，那么\( \dfrac{1}{f(x)} \)为无穷大.
+\end{theorem}
+
+\section{极限运算法则}
+
+\begin{theorem}
+	两个无穷小的和是无穷小.
+\end{theorem}
+
+\begin{note}
+	用\uwave{数学归纳法}可证：\textcolor{red}{有限个无穷小之和也是无穷小}.
+\end{note}
+
+\begin{theorem}
+	有界函数与无穷小的乘积是无穷小.
+\end{theorem}
+\begin{example}
+	\[ \lim\limits_{x \to \infty}\dfrac{\arctan x}{x} = \lim\limits_{x \to \infty}\dfrac{1}{x} \cdot \arctan x = 0. \]
+\end{example}
+
+\begin{note}
+	常数的极限是常数本身.
+\end{note}
+
+\begin{corollary}
+	常数与无穷小的乘积是无穷小.
+\end{corollary}
+
+\begin{corollary}
+	有限个无穷小的乘积是无穷小.
+\end{corollary}
+
+\begin{theorem}
+	如果\( \lim f(x) = A \)、\( \lim g(x) = B \)（即，若两函数极限存在），那么：
+	\begin{enumerate}
+		\item 和（或差）的极限等于极限的和（或差）：\( \lim [f(x) \pm g(x)] = \lim f(x) \pm \lim g(x) = A \pm B \);
+		\item 积的极限等于极限的积：\( \lim [f(x) \cdot g(x)] = \lim f(x) \cdot \lim g(x) = A \cdot B \);
+		\item 商的极限等于极限的商：（若又有\( B \neq 0 \)）
+		\[ \lim \dfrac{f(x)}{g(x)} = \dfrac{\lim f(x)}{\lim g(x)} = \dfrac{A}{B} \]
+	\end{enumerate}
+\end{theorem}
+
+\begin{corollary}
+	如果\( \lim f(x) \)存在，而\( c \)为常数，那么
+	\[ \lim [cf(x)] = c\lim f(x) \]
+\end{corollary}
+\begin{note}
+	这是因为\( \lim c = c \)
+\end{note}
+
+\begin{corollary}
+	如果\( \lim f(x) \)存在，而\( u \)是正整数，那么
+	\[ \lim [f(x)]^{n} = [\lim f(x)]^{n} \]
+\end{corollary}
+\begin{note}
+	\textcolor{red}{幂的极限等于极限的幂}.
+\end{note}
+
+\begin{theorem}
+	设有数列\( \{x_{n}\} \)和\( \{y_{n}\} \).如果
+	\[ \lim\limits_{n \to \infty}x_{n} = A,\quad \lim\limits_{n \to \infty}y_{n} = B \]
+	那么
+	\begin{enumerate}
+		\item \( \lim\limits_{n \to \infty}(x_{n} \pm y_{n}) = A \pm B \);
+		\item \( \lim\limits_{n \to \infty}(x_{n} \cdot y_{n}) = A \cdot B \);
+		\item 当\( y_{n} \neq 0\quad(n =1,\ 2,\ \cdots) \)且\( B \neq 0 \)时，\( \lim\limits_{n \to \infty}\dfrac{x_{n}}{y_{n}} = \dfrac{A}{B} \)
+	\end{enumerate}
+\end{theorem}
+
+\begin{theorem}
+	如果\( \varphi (x) \geqslant \psi (x) \)，而\( \lim \varphi (x) = A \)，\( \lim \psi (x) = B \)，那么\( A \geqslant B \)
+\end{theorem}
+
+\begin{theorem}[复合函数的极限运算法则]
+	设函数\( y = f[g(x)] \)是由函数\( u = g(x) \)与函数\( y = f(u) \)复合而成，\( f[g(x)] \)在点\( x_{0} \)的某去心领域内有定义，若\( \lim\limits_{x \to x_{0}}g(x) = u_{0} \)，\( \lim\limits_{u \to u_{0}} = A \)，且存在\( \delta_{0} > 0 \)，当\( x \in \mathring{U}(x_{0}, \delta_{0}) \)时，有\( g(x) \neq u_{0} \)，则
+	\[ \lim\limits_{x \to x_{0}}f[g(x)] = \lim\limits_{u \to u_{0}}f(u) = A \]
+\end{theorem}
+
+\begin{theorem}
+	如果\( \lim\limits_{x \to x_{0}}f(x) \)存在，但\( \lim\limits_{x \to x_{0}} \)不存在，那么\( \lim\limits_{x \to x_{0}}[f(x) \pm g(x)] \)不存在.
+\end{theorem}
 
 
 
