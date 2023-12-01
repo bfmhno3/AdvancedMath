@@ -1,7 +1,7 @@
 \documentclass[lang=cn,10pt]{elegantbook}
 
 \title{高等数学：基于 \LaTeX{} 的个人知识总结}
-\subtitle{Advanced Math Notes: Based on \LaTeX{}}
+\subtitle{Advanced Math: Based on \LaTeX{}}
 
 \author{彭正萧 \& PENG Zhengxiao}
 \institute{西北农林科技大学}
@@ -478,6 +478,128 @@
 	如果\( \lim\limits_{x \to x_{0}}f(x) \)存在，但\( \lim\limits_{x \to x_{0}} \)不存在，那么\( \lim\limits_{x \to x_{0}}[f(x) \pm g(x)] \)不存在.
 \end{theorem}
 
+\section{极限存在准则\quad 两个重要极限}
+
+\begin{note}
+	\begin{enumerate}
+		\item 夹逼准则
+		\begin{enumerate}
+			\item 如果数列\( \{x_{n}\} \)，\( \{y_{n}\} \)及\( \{z_{n}\} \)满足下列条件：
+			\begin{enumerate}
+				\item 从某项起，即\( \exists n_{0} \in N_{+} \)，当\( n > n_{0} \)时，有
+				\[ y _{n} \leqslant x_{n} \leqslant z_{n} \]
+				\item \( \lim\limits_{n \to \infty}y_{n} = a \)，\( \lim\limits_{n \to \infty}z_{n} = a \)
+			\end{enumerate}
+			那么数列\( \{x_{n}\} \)的极限存在，且\( \lim\limits_{n \to \infty}x_{n} = a \).
+			\item 如果
+			\begin{enumerate}
+				\item 当\( x \in \mathring{U}(x_{0}, r) \)（或\( |x| > M \)）时，
+				\[ g(x) \leqslant f(x) \leqslant h(x) \]
+				\item \( \lim\limits_{\substack{x \to x_{0}\\\\(x \to \infty)}}g(x) = A \)，\( \lim\limits_{\substack{x \to x_{0}\\\\(x \to \infty)}}h(x) = A \)
+			\end{enumerate}
+			那么\( \lim\limits_{\substack{x \to x_{0}\\\\(x \to \infty)}}f(x) \)存在，且等于\( A \).
+		\end{enumerate}
+		\item 单调有界数列必有极限.
+		\item 设函数\( f(x) \)在点\( x_{0} \)的某个左领域内单调并且有界，则\( f(x) \)在\( x_{0} \)的左极限\( f(x_{0}^{-}) \)必定存在.
+		\item 柯西（Cauchy）极限存在准则（或\uwave{柯西审敛原理}）：数列\( \{x_{n}\} \)收敛的{\heiti 充分必要条件}是：对于任意给定的正数\( \varepsilon \)，存在正整数\( N \)，使得当\( m > N,\quad n>N \)时，有
+		\[ |x_{n} - x_{m} | < \varepsilon \]
+	\end{enumerate}
+\end{note}
+
+\section{无穷小的比较}
+\begin{definition}
+	如果\( \lim \dfrac{\beta}{\alpha} = 0 \)，那么就说\( \beta \)是比\( \alpha \)\uwave{高阶的无穷小}，记作\( \beta = o(\alpha) \);\\
+	如果\( \lim \dfrac{\beta}{\alpha} = \infty \)，那么就说\( \beta \)是比\( \alpha \)\uwave{低阶的无穷小};\\
+	如果\( \lim \dfrac{\beta}{\alpha} = c \neq 0 \)，那么就说\( \beta \)与\( \alpha \)是\uwave{同阶无穷小};\\
+	如果\( \lim \dfrac{\beta}{\alpha^{k}} = c \neq 0,\ k > 0 \)，那么就说\( \beta \)是关于\( \alpha \)的\uwave{\( k \)阶无穷小};\\
+	如果\( \lim \dfrac{\beta}{\alpha} = 1 \)，那么就说\( \beta \)与\( \alpha \)是\uwave{等价无穷小}，记作\( \alpha \sim \beta \).
+\end{definition}
+
+\begin{theorem}
+	\( \beta \)与\( \alpha \)是等价无穷小的{\heiti 充分必要条件}为
+	\[ \beta = \alpha + o(\alpha) \]
+\end{theorem}
+
+\begin{theorem}
+	设\( \alpha \sim \widetilde{\alpha} \)，\( \beta \sim \widetilde{\beta} \)，且\( \lim \dfrac{\widetilde{\beta}}{\widetilde{\alpha}} \)存在，则
+	\[ \lim\dfrac{\beta}{\alpha} = \lim\dfrac{\widetilde{\beta}}{\widetilde{\alpha}} \]
+\end{theorem}
+
+\section{函数的连续性与间断点}
+
+\subsection{函数的连续性}
+\begin{definition}
+	\begin{enumerate}
+		\item 设函数\( y = f(x) \)在点\( x_{0} \)的某一零域内有定义，如果
+		\[ \lim\limits_{\Delta x \to 0}\Delta y = \lim\limits_{\Delta x \to 0}[f(x + \Delta x) - f(x_{0})] = 0 \]
+		那么就称函数\( y = f(x) \)在点\( x_{0} \)连续.
+		\item 设函数\( y = f(x) \)在点\( x_{0} \)的某一领域内有定义，如果
+		\[ \lim\limits_{x \to x_{0}}f(x) = f(x_{0}) \]
+		那么就称函数\( f(x) \)在点\( x_{0} \)连续.
+		\item \( f(x) \)在点\( x_{0} \)连续\( \Leftrightarrow \varepsilon > 0,\ \exists \delta > 0,\ \text{当}| x - x_{0}|< \delta \text{时，有}|f(x) - f(x_{0})| < \varepsilon \).
+	\end{enumerate}
+\end{definition}
+
+\begin{note}
+	\label{not:tiaojian}
+	函数在某点连续的{\heiti 充分必要条件}是：
+	\begin{enumerate}[label=\( \Circled{\arabic*} \)]
+		\item 有定义（在该点有函数值）;
+		\item 有极限;
+		\item 极限值 \( = \) 函数值.
+	\end{enumerate}
+\end{note}
+
+\begin{definition}[左右连续]
+	\begin{enumerate}
+		\item 如果\( \lim\limits_{x \to x_{0}^{-}}f(x) = f(x_{0}^{-}) \)存在且等于\( f(x_{0}) \)，即
+		\[ f(x_{0}^{-}) = f(x_{0}) \]
+		那么就说函数\( f(x) \)在点\( x_{0} \)\uwave{左连续};
+		\item 如果\( \lim\limits_{x \to x_{0}^{+}}f(x) = f(x_{0}^{+}) \)存在且等于\( f(x_{0}) \)，即
+		\[ f(x_{0}^{+}) = f(x_{0}) \]
+		那么就说函数\( f(x) \)在点\( x_{0} \)\uwave{右连续}.
+	\end{enumerate}
+\end{definition}
+
+\subsection{函数的间断点}
+\begin{note}
+	间断点的分类：
+	\begin{enumerate}[label=\Roman*类：]
+		\item 左右极限都存在
+		\begin{enumerate}
+			\item 可去间断点（\( f(x_{0}^{-}) = f(x_{0}^{+}) \)）;
+			\item 跳跃间断点（\( f(x_{0}^{-}) \neq f(x_{0}^{+}) \)）.
+		\end{enumerate}
+		\item 左右极限至少存在一个
+		\begin{enumerate}
+			\item 无穷间断点;
+			\item 震荡间断点.
+		\end{enumerate}
+	\end{enumerate}
+\end{note}
+
+\section{连续函数的运算与初等函数的连续性}
+
+\begin{theorem}
+	设函数\( f(x) \)和\( g(x) \)在点\( x_{0} \)连续，则它们的和（差）\( f \pm g \)、积\( f \cdot g \)及商\( \dfrac{f}{g} \)（当\( g(x_{0}) \neq 0 \)时）都在点\( x_{0} \)连续
+\end{theorem}
+
+\begin{theorem}
+	如果函数\( y = f(x) \)在区间\( I_{x} \)上单调增加（或单调减少）且连续，那么它的反函数\( x = f^{-1}(x) \)也在对应的区间\( I_{y} = \{y | y = f(x),\ x\in I_{x}\} \)上单调增加（或单调减少）且连续.
+\end{theorem}
+
+\begin{theorem}
+	设函数\( y =f[\ g(x)\ ] \)由函数\( u = g(x) \)与函数\( y = f(u) \)复合而成，\( \mathring{U}(x_{0}) \subset D_{f \cdot g} \).若\( \lim\limits_{x \to x_{0}}g(x_{0}) = u_{0} \)，而函数\( y = f(u) \)在\( u = u_{0} \)连续，则
+	\[ \lim\limits_{x \to x_{0}}f[\ g(x)\ ] = \lim\limits_{u \to u_{0}}f(u) = f(u_{0}) \]
+\end{theorem}
+
+\begin{note}
+	在外层函数连续的情况下，求复合函数\( f[\ g(x)\ ] \)的极限时，函数复合\( f \)与极限号\( \lim\limits_{x \to x_{0}} \)可以交换次序.
+	\begin{example}
+		\[ \lim\limits_{x \to o}e^{\cos x} = e^{\lim\limits_{x \to 0}\cos x} = e^{\cos o} = e \]
+	\end{example}
+\end{note}
+
 
 
 
@@ -564,431 +686,431 @@
 
 
 
-% 附录
-\appendix
-\renewcommand{\thechapter}{\Roman{chapter}}% 修改附录编号样式为罗马数字
-\chapter{常用的麦克劳林(Maclaurin)公式(佩亚洛余项)}
-\begin{enumerate}
-	\item \[ e^{x} = 1 + x + \dfrac{x^{2}}{2!} + \cdots + \dfrac{x^{n}}{n!} + o(x^{n}) \]
-	\item \[ \sin x = x - \dfrac{x^{3}}{3!} + \dfrac{x^{5}}{5!} - \dfrac{x^{7}}{7!} + \cdots + (-1)^{n}\dfrac{x^{2n + 1}}{(2n + 1)!} + o(x^{2n + 2}) \]
-	\item \[ \cos x = 1 - \dfrac{x^{2}}{2!} + \dfrac{x^{4}}{4!} - \dfrac{x^{6}}{6!} + \cdots + (-1)^{n}\dfrac{x^{2n}}{(2n)!} + o(x^{2n + 1}) \]
-	\item \[ \ln(1 + x) = x - \dfrac{x^{2}}{2} + \dfrac{x^{3}}{3} - \dfrac{x^{4}}{4} + \cdots + (-1)^{n}\dfrac{x^{n + 1}}{n + 1} + o(x^{n + 1}) \]
-	\item \[ \dfrac{1}{1 - x} = 1 + x + x^{2} + \cdots +x^{n} + o(x^{n}) \]
-	\item \[ (1 + x)^{\alpha} = 1 + \alpha x + \dfrac{\alpha(\alpha - 1)}{2!}x^{2} + \cdots + \dfrac{\alpha(\alpha - 1)\cdots(\alpha - n + 1)}{n!}x^{n} + o(x^{n}) \]
-	\item \[ \arcsin x = x + \dfrac{1}{6}x^{3} + o(x^{3}) \]
-	\item \[ \arctan x = x - \dfrac{1}{3}x^{3} + o(x^{3}) \]
-\end{enumerate}
-\chapter{常用的导数公式}
-\begin{enumerate}
-	\item \( (\ C\ )' = 0 \).
-	\item \( (\ x^{\mu}\ )' = \mu x^{\mu - 1} \).
-	\item \( (\ \sin x\ )' = \cos x \).
-	\item \( (\ \cos x \ )' = -\sin x \).
-	\item \( (\ \tan x \ )' = \sec^{2}x \).
-	\item \( (\ \cot x \ )' = -\csc^{2}x \).
-	\item \( (\ \sec x \ )' = \sec x \cdot \tan x \).
-	\item \( (\ \csc x \ )' = -\csc x \cdot \tan x \).
-	\item \( (\ a^{x}\ )' = a^{x}\ln a\quad(a > 0, a\neq0) \).
-	\item \( (\ e^{x}\ )' = e^{x} \).
-	\item \( (\ \log^{a}x\ )' = \dfrac{1}{x\ln a}\quad(a>0,a\neq 1) \).
-	\item \( (\ \ln x\ )' = \dfrac{1}{x},\quad (\ \ln |x|\ )' = \dfrac{1}{x} \).
-	\item \[ (\ \arcsin x\ )' = \dfrac{1}{1 - x^{2}} \].
-	\item \[ (\ \arccos x\ )' = -\dfrac{1}{1 - x^{2}} \].
-	\item \[ (\ \arctan x\ )' = \dfrac{1}{1 + x^{2}} \].
-	\item \[ (\ \arccot\ x\ )' = -\dfrac{1}{1 +x^{2}} \].
-	\item \[ (\ \ln |\sin x| + C\ )' = \cot x \].
-	\item \[ (\ -\ln |\cos x|+ C\ )' = \tan x \].
-	\item \[ \ln \left(x + \sqrt{a^{2} + x^{2}}\right) \].
-	\item \[ (\ \ln |\sec x + \tan x|\ )' = \sec x \].
-	\item \[ (\ \ln |\csc x - \cot x|\ )' = \csc x \].
-	\item \[ (\ \sqrt{a^{2} + x^{2}} \ )' = \dfrac{x}{\sqrt{a^{2} + x^{2}}} \].
-	\item \[ (\ \sqrt{a^{2} - x^{2}} \ )' = \dfrac{x}{\sqrt{a^{2} - x^{2}}} \].
-	\item \( (\ \ch x + C \ )' = \sh x \).
-	\item \( (\ \sh x + C \ )' = \ch x \).\\
-	\begin{remark}
-		\[ \text{双曲正弦：} \sh x = \dfrac{e^{2} - e^{2}}{2} \] \\
-		\[ \text{双曲余弦：} \ch x = \dfrac{e^{2} + e^{2}}{2} \]
-	\end{remark}
-\end{enumerate}
-\chapter{常用的三角函数公式}
-\begin{enumerate}
-	\item 常用三角函数关系
-	\begin{enumerate}
-		\item 倒数关系：\( \tan \alpha \cdot \cot \alpha = \sin \alpha \cdot \csc \alpha = \cos \alpha \cdot \sec \alpha = 1 \).
-		\\
-		\item 商数关系：\( \tan \alpha = \dfrac{\sin \alpha}{\cos \alpha} \)、\( \cot \alpha = \dfrac{\cos\alpha}{\sin\alpha} \).
-		\\
-		\item 平方关系：\( \sin^{2}\alpha + \cos^{2}\alpha = 1 \)、\( 1 + \cot^{2}\alpha = \csc^{2}\alpha \)、\( 1 + \tan^{2}\alpha = \sec^{2}\alpha \).
-	\end{enumerate}
-	\item 诱导公式（\textcolor{red}{奇变偶不变符号看象限}）
-	\begin{enumerate}
-		\item 
-		\( \begin{array}{ll}
-			\sin(2k\pi \pm \alpha) =\pm \sin \alpha & \cos(2k\pi \pm \alpha) = + \cos \alpha \\
-			\tan(2k\pi \pm \alpha) =\pm \tan \alpha & \cot(2k\pi\pm \alpha) = \pm \cot \alpha \\
-		\end{array}
-		\)
-		\item 
-		\(
-			\begin{array}{ll}
-				\sin(\pi \pm \alpha) =  \mp \sin \alpha & \cos(\pi \pm \alpha) = - \cos \alpha \\
-				\tan(\pi \pm \alpha) = \pm \tan \alpha & \cot(\pi \pm \alpha) = \pm \cot \alpha \\		
-			\end{array}
-		\)
-		\item
-		\(
-			\begin{array}{ll}
-				\sin(-\alpha) = -\sin\alpha & \cos(-\alpha) = \cos\alpha \\
-				\tan(-\alpha) = -\tan\alpha & \cot(-\alpha) = -\cot \alpha \\
-			\end{array}
-		\)
-		\begin{remark}
-			三角函数的{\heiti 奇偶性}
-		\end{remark}
-		\item 
-		\(
-			\begin{array}{ll}
-				\sin(\frac{\pi}{2} \pm \alpha) = + \cos\alpha & \cos(\frac{\pi}{2} \pm \alpha) = \mp \sin \alpha \\
-				\tan(\frac{\pi}{2} \pm \alpha) = \mp \cot\alpha & \cot(\frac{\pi}{2} \pm \alpha) = \mp\tan\alpha \\
-			\end{array}
-		\)
-	\end{enumerate}
-	\item 二角和差公式
-	\begin{enumerate}
-		\item \( \cos (\alpha \pm \beta) = \cos\alpha\cdot\cos\beta \mp \sin\alpha\cdot\sin\beta \).
-		\item \( \sin(\alpha \pm \beta) = \sin\alpha\cdot\cos\beta \mp \cos\alpha\cdot\sin\beta \).
-		\item \( \tan(\alpha \pm \beta) = \displaystyle\dfrac{\tan\alpha \pm \tan\beta}{1 \mp \tan\alpha\cdot\tan\beta} \).
-	\end{enumerate}
-	\item 积化和差公式
-	\begin{enumerate}
-		\item \( \sin\alpha\cdot\cos\beta = \frac{1}{2}[\sin(\alpha + \beta) + \sin(\alpha - \beta)] \).
-		\item \( \cos\alpha\cdot\sin\beta = \frac{1}{2}[\sin(\alpha + \beta) - \sin(\alpha - \beta)] \).
-		\item \( \cos\alpha\cdot\cos\beta = \frac{1}{2}[\cos(\alpha + \beta) + \cos(\alpha - \beta)] \).
-		\item \( \sin\alpha\cdot\sin\beta = -\frac{1}{2}[\cos(\alpha + \beta) - \cos(\alpha - \beta)] \).
-	\end{enumerate}
-	\item 和差化积公式
-	\begin{enumerate}
-		\item \( \sin\alpha + \sin\beta = 2\sin\dfrac{\alpha + \beta}{2} \cdot \cos\dfrac{\alpha - \beta}{2} \).
-		\item \( \sin\alpha - \sin\beta = 2\cos\dfrac{\alpha + \beta}{2} \cdot \sin\dfrac{\alpha - \beta}{2} \).
-		\item \( \cos\alpha + \cos\beta = 2\cos\dfrac{\alpha + \beta}{2} \cdot \cos\dfrac{\alpha + \beta}{2} \).
-		\item \( \cos\alpha - \cos\beta = -2\sin\dfrac{\alpha + \beta}{2} \cdot \cos\dfrac{\alpha - \beta}{2} \).
-	\end{enumerate}
-	\item 二倍角公式
-	\begin{enumerate}
-		\item \( \sin 2\alpha = 2\sin\alpha \cdot \cos \beta \).
-		\item \( \cos2\alpha = \cos^{2}\alpha - \sin^{2}\alpha = 2\cos^{2}\alpha - 1 = 1 - \sin^{2}\alpha \).
-		\item \( \displaystyle\tan2\alpha = \dfrac{2\tan\alpha}{1 - \tan^{2}\alpha} \).
-	\end{enumerate}
-	\item 降幂公式
-	\begin{enumerate}
-		\item \( \cos^{2}\alpha = \frac{1}{2}(1 + \cos2\alpha) \).
-		\item \( \sin^{2}\alpha = \frac{1}{2}(1 - \cos2\alpha) \).
-	\end{enumerate}
-	\item 半角公式
-	\begin{enumerate}
-		\item \( \tan\frac{\alpha}{2} = \dfrac{\sin\alpha}{1 + \cos\alpha} = \dfrac{1 - \cos\alpha}{\sin\alpha} = \pm \sqrt{\dfrac{1 - \cos\alpha}{1 + \cos\alpha}} \).
-		\item \( \displaystyle \cot\frac{\alpha}{2} = \frac{1}{\tan\alpha} \).
-	\end{enumerate}
-	\item 辅助角公式
-	\[  a\sin\alpha \pm b\cos\alpha = \sqrt{a^{2} + b^{2}}\sin(\alpha \pm \varphi),\ \tan\varphi = \frac{b}{a}\].
-	\item 万能公式
-	\begin{enumerate}
-		\item \[ \sin\alpha = \dfrac{2\tan\dfrac{\alpha}{2}}{1 + \tan^{2}\dfrac{\alpha}{2}} \].
-		\item \[ \cos\alpha = \dfrac{1 - \tan^{2}\dfrac{\alpha}{2}}{1 + \tan^{2}\dfrac{\alpha}{2}} \].
-		\item \[ \tan\alpha= \dfrac{2\tan\dfrac{\alpha}{2}}{1 - \tan^{2}\dfrac{\alpha}{2}}\].
-	\end{enumerate}
-\end{enumerate}
-\chapter{基本初等函数的图形}
-\begin{itemize}
-	\item 幂函数
-		\begin{figure}[!htb]
-			\centering
-			\begin{tikzpicture}[scale=1.5]
-				\draw[->,black] (0,0) -- (2.5,0);
-				\node[below] at (2.5,0) {\( x \)};
-				\draw[->,black] (0,0) -- (0,2.5);
-				\node[left] at (0,2.5) {\( y \)};
-				\node[left] at (0,0) {\( O \)};
-				\node[left] at (0,1) {\( 1 \)};
-				\node[below] at (1,0) {\( 1 \)};
-				
-				\tkzInit[xmax=2, ymax=2]
-				\tkzHLine{2}
-				\tkzVLine{2}
-%				\tkzFct[samples=1, domain=0:2]{2}
-%				\tkzFct[samples=1, domain=0:1,style=dashed]{1}
-				\tkzFct[samples=400, domain=0:5]{x**3}
-				\tkzFct[samples=400, domain=0:5]{x**2}
-				\tkzFct[samples=400, domain=0:5]{x**(1.5)}
+%% 附录
+%\appendix
+%\renewcommand{\thechapter}{\Roman{chapter}}% 修改附录编号样式为罗马数字
+%\chapter{常用的麦克劳林(Maclaurin)公式(佩亚洛余项)}
+%\begin{enumerate}
+%	\item \[ e^{x} = 1 + x + \dfrac{x^{2}}{2!} + \cdots + \dfrac{x^{n}}{n!} + o(x^{n}) \]
+%	\item \[ \sin x = x - \dfrac{x^{3}}{3!} + \dfrac{x^{5}}{5!} - \dfrac{x^{7}}{7!} + \cdots + (-1)^{n}\dfrac{x^{2n + 1}}{(2n + 1)!} + o(x^{2n + 2}) \]
+%	\item \[ \cos x = 1 - \dfrac{x^{2}}{2!} + \dfrac{x^{4}}{4!} - \dfrac{x^{6}}{6!} + \cdots + (-1)^{n}\dfrac{x^{2n}}{(2n)!} + o(x^{2n + 1}) \]
+%	\item \[ \ln(1 + x) = x - \dfrac{x^{2}}{2} + \dfrac{x^{3}}{3} - \dfrac{x^{4}}{4} + \cdots + (-1)^{n}\dfrac{x^{n + 1}}{n + 1} + o(x^{n + 1}) \]
+%	\item \[ \dfrac{1}{1 - x} = 1 + x + x^{2} + \cdots +x^{n} + o(x^{n}) \]
+%	\item \[ (1 + x)^{\alpha} = 1 + \alpha x + \dfrac{\alpha(\alpha - 1)}{2!}x^{2} + \cdots + \dfrac{\alpha(\alpha - 1)\cdots(\alpha - n + 1)}{n!}x^{n} + o(x^{n}) \]
+%	\item \[ \arcsin x = x + \dfrac{1}{6}x^{3} + o(x^{3}) \]
+%	\item \[ \arctan x = x - \dfrac{1}{3}x^{3} + o(x^{3}) \]
+%\end{enumerate}
+%\chapter{常用的导数公式}
+%\begin{enumerate}
+%	\item \( (\ C\ )' = 0 \).
+%	\item \( (\ x^{\mu}\ )' = \mu x^{\mu - 1} \).
+%	\item \( (\ \sin x\ )' = \cos x \).
+%	\item \( (\ \cos x \ )' = -\sin x \).
+%	\item \( (\ \tan x \ )' = \sec^{2}x \).
+%	\item \( (\ \cot x \ )' = -\csc^{2}x \).
+%	\item \( (\ \sec x \ )' = \sec x \cdot \tan x \).
+%	\item \( (\ \csc x \ )' = -\csc x \cdot \tan x \).
+%	\item \( (\ a^{x}\ )' = a^{x}\ln a\quad(a > 0, a\neq0) \).
+%	\item \( (\ e^{x}\ )' = e^{x} \).
+%	\item \( (\ \log^{a}x\ )' = \dfrac{1}{x\ln a}\quad(a>0,a\neq 1) \).
+%	\item \( (\ \ln x\ )' = \dfrac{1}{x},\quad (\ \ln |x|\ )' = \dfrac{1}{x} \).
+%	\item \[ (\ \arcsin x\ )' = \dfrac{1}{1 - x^{2}} \].
+%	\item \[ (\ \arccos x\ )' = -\dfrac{1}{1 - x^{2}} \].
+%	\item \[ (\ \arctan x\ )' = \dfrac{1}{1 + x^{2}} \].
+%	\item \[ (\ \arccot\ x\ )' = -\dfrac{1}{1 +x^{2}} \].
+%	\item \[ (\ \ln |\sin x| + C\ )' = \cot x \].
+%	\item \[ (\ -\ln |\cos x|+ C\ )' = \tan x \].
+%	\item \[ \ln \left(x + \sqrt{a^{2} + x^{2}}\right) \].
+%	\item \[ (\ \ln |\sec x + \tan x|\ )' = \sec x \].
+%	\item \[ (\ \ln |\csc x - \cot x|\ )' = \csc x \].
+%	\item \[ (\ \sqrt{a^{2} + x^{2}} \ )' = \dfrac{x}{\sqrt{a^{2} + x^{2}}} \].
+%	\item \[ (\ \sqrt{a^{2} - x^{2}} \ )' = \dfrac{x}{\sqrt{a^{2} - x^{2}}} \].
+%	\item \( (\ \ch x + C \ )' = \sh x \).
+%	\item \( (\ \sh x + C \ )' = \ch x \).\\
+%	\begin{remark}
+%		\[ \text{双曲正弦：} \sh x = \dfrac{e^{2} - e^{2}}{2} \] \\
+%		\[ \text{双曲余弦：} \ch x = \dfrac{e^{2} + e^{2}}{2} \]
+%	\end{remark}
+%\end{enumerate}
+%\chapter{常用的三角函数公式}
+%\begin{enumerate}
+%	\item 常用三角函数关系
+%	\begin{enumerate}
+%		\item 倒数关系：\( \tan \alpha \cdot \cot \alpha = \sin \alpha \cdot \csc \alpha = \cos \alpha \cdot \sec \alpha = 1 \).
+%		\\
+%		\item 商数关系：\( \tan \alpha = \dfrac{\sin \alpha}{\cos \alpha} \)、\( \cot \alpha = \dfrac{\cos\alpha}{\sin\alpha} \).
+%		\\
+%		\item 平方关系：\( \sin^{2}\alpha + \cos^{2}\alpha = 1 \)、\( 1 + \cot^{2}\alpha = \csc^{2}\alpha \)、\( 1 + \tan^{2}\alpha = \sec^{2}\alpha \).
+%	\end{enumerate}
+%	\item 诱导公式（\textcolor{red}{奇变偶不变符号看象限}）
+%	\begin{enumerate}
+%		\item 
+%		\( \begin{array}{ll}
+%			\sin(2k\pi \pm \alpha) =\pm \sin \alpha & \cos(2k\pi \pm \alpha) = + \cos \alpha \\
+%			\tan(2k\pi \pm \alpha) =\pm \tan \alpha & \cot(2k\pi\pm \alpha) = \pm \cot \alpha \\
+%		\end{array}
+%		\)
+%		\item 
+%		\(
+%			\begin{array}{ll}
+%				\sin(\pi \pm \alpha) =  \mp \sin \alpha & \cos(\pi \pm \alpha) = - \cos \alpha \\
+%				\tan(\pi \pm \alpha) = \pm \tan \alpha & \cot(\pi \pm \alpha) = \pm \cot \alpha \\		
+%			\end{array}
+%		\)
+%		\item
+%		\(
+%			\begin{array}{ll}
+%				\sin(-\alpha) = -\sin\alpha & \cos(-\alpha) = \cos\alpha \\
+%				\tan(-\alpha) = -\tan\alpha & \cot(-\alpha) = -\cot \alpha \\
+%			\end{array}
+%		\)
+%		\begin{remark}
+%			三角函数的{\heiti 奇偶性}
+%		\end{remark}
+%		\item 
+%		\(
+%			\begin{array}{ll}
+%				\sin(\frac{\pi}{2} \pm \alpha) = + \cos\alpha & \cos(\frac{\pi}{2} \pm \alpha) = \mp \sin \alpha \\
+%				\tan(\frac{\pi}{2} \pm \alpha) = \mp \cot\alpha & \cot(\frac{\pi}{2} \pm \alpha) = \mp\tan\alpha \\
+%			\end{array}
+%		\)
+%	\end{enumerate}
+%	\item 二角和差公式
+%	\begin{enumerate}
+%		\item \( \cos (\alpha \pm \beta) = \cos\alpha\cdot\cos\beta \mp \sin\alpha\cdot\sin\beta \).
+%		\item \( \sin(\alpha \pm \beta) = \sin\alpha\cdot\cos\beta \mp \cos\alpha\cdot\sin\beta \).
+%		\item \( \tan(\alpha \pm \beta) = \displaystyle\dfrac{\tan\alpha \pm \tan\beta}{1 \mp \tan\alpha\cdot\tan\beta} \).
+%	\end{enumerate}
+%	\item 积化和差公式
+%	\begin{enumerate}
+%		\item \( \sin\alpha\cdot\cos\beta = \frac{1}{2}[\sin(\alpha + \beta) + \sin(\alpha - \beta)] \).
+%		\item \( \cos\alpha\cdot\sin\beta = \frac{1}{2}[\sin(\alpha + \beta) - \sin(\alpha - \beta)] \).
+%		\item \( \cos\alpha\cdot\cos\beta = \frac{1}{2}[\cos(\alpha + \beta) + \cos(\alpha - \beta)] \).
+%		\item \( \sin\alpha\cdot\sin\beta = -\frac{1}{2}[\cos(\alpha + \beta) - \cos(\alpha - \beta)] \).
+%	\end{enumerate}
+%	\item 和差化积公式
+%	\begin{enumerate}
+%		\item \( \sin\alpha + \sin\beta = 2\sin\dfrac{\alpha + \beta}{2} \cdot \cos\dfrac{\alpha - \beta}{2} \).
+%		\item \( \sin\alpha - \sin\beta = 2\cos\dfrac{\alpha + \beta}{2} \cdot \sin\dfrac{\alpha - \beta}{2} \).
+%		\item \( \cos\alpha + \cos\beta = 2\cos\dfrac{\alpha + \beta}{2} \cdot \cos\dfrac{\alpha + \beta}{2} \).
+%		\item \( \cos\alpha - \cos\beta = -2\sin\dfrac{\alpha + \beta}{2} \cdot \cos\dfrac{\alpha - \beta}{2} \).
+%	\end{enumerate}
+%	\item 二倍角公式
+%	\begin{enumerate}
+%		\item \( \sin 2\alpha = 2\sin\alpha \cdot \cos \beta \).
+%		\item \( \cos2\alpha = \cos^{2}\alpha - \sin^{2}\alpha = 2\cos^{2}\alpha - 1 = 1 - \sin^{2}\alpha \).
+%		\item \( \displaystyle\tan2\alpha = \dfrac{2\tan\alpha}{1 - \tan^{2}\alpha} \).
+%	\end{enumerate}
+%	\item 降幂公式
+%	\begin{enumerate}
+%		\item \( \cos^{2}\alpha = \frac{1}{2}(1 + \cos2\alpha) \).
+%		\item \( \sin^{2}\alpha = \frac{1}{2}(1 - \cos2\alpha) \).
+%	\end{enumerate}
+%	\item 半角公式
+%	\begin{enumerate}
+%		\item \( \tan\frac{\alpha}{2} = \dfrac{\sin\alpha}{1 + \cos\alpha} = \dfrac{1 - \cos\alpha}{\sin\alpha} = \pm \sqrt{\dfrac{1 - \cos\alpha}{1 + \cos\alpha}} \).
+%		\item \( \displaystyle \cot\frac{\alpha}{2} = \frac{1}{\tan\alpha} \).
+%	\end{enumerate}
+%	\item 辅助角公式
+%	\[  a\sin\alpha \pm b\cos\alpha = \sqrt{a^{2} + b^{2}}\sin(\alpha \pm \varphi),\ \tan\varphi = \frac{b}{a}\].
+%	\item 万能公式
+%	\begin{enumerate}
+%		\item \[ \sin\alpha = \dfrac{2\tan\dfrac{\alpha}{2}}{1 + \tan^{2}\dfrac{\alpha}{2}} \].
+%		\item \[ \cos\alpha = \dfrac{1 - \tan^{2}\dfrac{\alpha}{2}}{1 + \tan^{2}\dfrac{\alpha}{2}} \].
+%		\item \[ \tan\alpha= \dfrac{2\tan\dfrac{\alpha}{2}}{1 - \tan^{2}\dfrac{\alpha}{2}}\].
+%	\end{enumerate}
+%\end{enumerate}
+%\chapter{基本初等函数的图形}
+%\begin{itemize}
+%	\item 幂函数
+%		\begin{figure}[!htb]
+%			\centering
+%			\begin{tikzpicture}[scale=1.5]
+%				\draw[->,black] (0,0) -- (2.5,0);
+%				\node[below] at (2.5,0) {\( x \)};
+%				\draw[->,black] (0,0) -- (0,2.5);
+%				\node[left] at (0,2.5) {\( y \)};
+%				\node[left] at (0,0) {\( O \)};
+%				\node[left] at (0,1) {\( 1 \)};
+%				\node[below] at (1,0) {\( 1 \)};
+%				
+%				\tkzInit[xmax=2, ymax=2]
+%				\tkzHLine{2}
 %				\tkzVLine{2}
-%				\tkzVLine[style=dashed,domain=0:1]{1}
-				\tkzFct[samples=2, domain=0:5]{x}
-				\tkzFct[samples=400, domain=0:5]{x**(2./3.)}
-				\tkzFct[samples=400, domain=0:5]{x**(1./3.)}
-				\tkzFct[samples=400, domain=0:5]{x**(.5)}
-				
-				\draw[dashed,black] (0,1) -- (1,1);
-				\draw[dashed,black] (1,0) -- (1,1);
-			\end{tikzpicture}
-			\qquad\qquad
-			\begin{tikzpicture}[scale=1.5]
-				\draw[->,black] (0,0) -- (2.5,0);
-				\node[below] at (2.5,0) {\( x \)};
-				\draw[->,black] (0,0) -- (0,2.5);
-				\node[left] at (0,2.5) {\( y \)};
-				\draw[dashed,black] (0,1) -- (1,1);
-				\draw[dashed,black] (1,0) -- (1,1);
-				\node[left] at (0,0) {\( O \)};
-				\node[left] at (0,1) {\( 1 \)};
-				\node[below] at (1,0) {\( 1 \)};
-				
-				\tkzInit[xmax=2,ymax=2]
-				\tkzFct[samples=400,domain=0.1:2]{x**(-1./3)}
-				\tkzFct[samples=400,domain=0.1:2]{x**(-0.5)}
-				\tkzFct[samples=400,domain=0.1:2]{x**(-1)}
-				\tkzFct[samples=400,domain=0.1:2]{x**(-2)}
-				\tkzFct[samples=400,domain=0.5:2]{x**(-3)}
-				\tkzVLine{2}
-				\tkzHLine{2}
-			\end{tikzpicture}
-			\caption{\( y=x^{\mu} \)}
-		\end{figure}
-	\item 指数函数
-		\begin{figure}[!htb]
-			\centering
-			\begin{tikzpicture}[scale=1]
-				\tkzInit[xmax=3,xmin=-3,ymax=5]
-				\tkzFct[samples=400,domain=-2:1.5]{exp(x)}
-				\tkzFct[samples=400,domain=-1.5:2]{exp(-x)}
-				
-				\draw[->,black] (-3,0) -- (3,0);
-				\draw[->,black] (0,0) -- (0,5);
-				\node[below] (O) at (0,0) {\( O \)};
-				\node[below] (x) at (3,0) {\( x \)};
-				\node[left] (y) at (0,5) {\( y \)};
-				\node[left] (1) at (0,1) {\( 1 \)};
-				\node[below] (1.) at (1,0) {\( 1 \)};
-				\node[right] (>) at (1,2) {\( a > 1 \)};
-				\node[left] (<) at (-1,2) {\( 0<a<1 \)};
-			\end{tikzpicture}
-			\caption{\( y=a^{x} \)}
-		\end{figure}
-	\item 对数函数
-		\begin{figure}[!htb]
-			\centering
-			\begin{tikzpicture}[scale=1]
-				\draw[->, black] (0,-3) -- (0,3);
-				\draw[->, black] (0,0) -- (5,0);
-				\node[left] at (0,0) {\( O \)};
-				\node[below] at (5,0) {\( x \)};
-				\node[left] at (0,3) {\( y \)};
-				\node[left] at (0,1) {\( 1 \)};
-				\node[below] at (1,0) {\( 1 \)};
-				\node[below] at (3,0.9) {\( a>1 \)};
-				\node[above] at (3,-0.9) {\( 0<a<1 \)};
-				
-				\tkzInit[xmax=4,ymax=2,ymin=-2]
-				\tkzFct[samples=400,domain=0:4]{log(x)}
-				\tkzFct[samples=400,domain=0:4]{-log(x)}
-			\end{tikzpicture}
-			\caption{\( y=\log_{a} x \)}
-		\end{figure}
-	\newpage
-	\item 三角函数
-	\begin{enumerate}
-		\item 正弦函数
-		\begin{figure}[!htb]
-			\centering
-			\begin{tikzpicture}[scale=1]
-				\draw[->,black] (-2.3*pi,0) -- (2.3*pi,0);
-				\draw[->,black] (0,-1.5) -- (0,1.5);
-				\draw[black] (0,-1) -- (0.1,-1);
-				\draw[black] (0,1) -- (0.1,1);
-				\node[below] at (0.15,0) {\( O \)};
-				\node[left] at (0,1) {\( 1 \)};
-				\node[left] at (0,-1) {\( -1 \)};
-				\foreach \myx in {-2*pi,-1.5*pi,-1*pi,-0.5*pi,0.5*pi,1*pi,1.5*pi,2*pi}{%
-					\draw (\myx,0) -- (\myx,0.1);
-				}
-				\node[below] at (2.1*pi,0) {\( 2\pi \)};
-				\node[below] at (1.5*pi,0) {\( \frac{3\pi}{2} \)};
-				\node[below] at (0.9*pi,0) {\( \pi \)};
-				\node[below] at (0.5*pi,0) {\( \frac{\pi}{2} \)};
-				
-				\node[below] at (-1.9*pi,0) {\( -2\pi \)};
-				\node[below] at (-1.5*pi,0) {\( -\frac{3\pi}{2} \)};
-				\node[below] at (-1.1*pi,0) {\( -\pi \)};
-				\node[below] at (-0.5*pi,0) {\( -\frac{\pi}{2} \)};
-				
-				\tkzInit[xmin=-2.2*pi,xmax=2.2*pi,ymin=-1.5,ymax=1.5]
-				\tkzFct[color=black,thick,domain = -2.2*pi:2.2*pi]{sin(x)}
-			\end{tikzpicture}
-			\caption{\( y = \sin x \)}
-		\end{figure}
-		\item 余弦函数
-		\begin{figure}[!htb]
-			\centering
-			\begin{tikzpicture}[scale=1]
-				\draw[->,black] (-1.8*pi,0) -- (2.8*pi,0);
-				\draw[->,black] (0,-1.5) -- (0,1.5);
-				\draw[black] (0,-1) -- (0.1,-1);
-				%				\draw[black] (0,1) -- (0.1,1);
-				\node[below] at (0.15,0) {\( O \)};
-				\node[left] at (0,1) {\( 1 \)};
-				\node[left] at (0,-1) {\( -1 \)};
-				\foreach \myx in {-1.5*pi,-1*pi,-0.5*pi,0.5*pi,1*pi,1.5*pi,2*pi,2.5*pi}{%
-					\draw (\myx,0) -- (\myx,0.1);
-				}
-				\node[below] at (2.5*pi,0) {\( \frac{5\pi}{2} \)};
-				\node[below] at (2.1*pi,0) {\( 2\pi \)};
-				\node[below] at (1.55*pi,0) {\( \frac{3\pi}{2} \)};
-				\node[below] at (1*pi,0) {\( \pi \)};
-				\node[below] at (0.5*pi,0) {\( \frac{\pi}{2} \)};
-				
-				%				\node[below] at (-2*pi,0) {\( -2\pi \)};
-				\node[below] at (-1.6*pi,0) {\( -\frac{3\pi}{2} \)};
-				\node[below] at (-1*pi,0) {\( -\pi \)};
-				\node[below] at (-0.5*pi,0) {\( -\frac{\pi}{2} \)};
-				
-				\tkzInit[xmin=-1.8*pi,xmax=2.7*pi,ymin=-1.5,ymax=1.5]
-				\tkzFct[color=black,thick,domain = -1.8*pi:2.7*pi]{cos(x)}
-			\end{tikzpicture}
-			\caption{\( y = \cos x \)}
-		\end{figure}
-		\item 正切函数
-		\begin{figure}[!htb]
-			\centering
-			\begin{tikzpicture}[scale=0.5]
-				\draw[->,black] (0,-5) -- (0,5);
-				\draw[->,black] (-1.8*pi,0) -- (2.8*pi,0);
-				
-				\tkzInit[xmin=-1.5*pi,xmax=2.5*pi,ymin=-5,ymax=5]
-				\foreach \i in {-1.5,-0.5,0.5,1.5} {
-					\tkzFct[domain=\i*pi+0.01:(\i+1)*pi-0.01]{tan(\x)}
-				}
-				\foreach \i in {-1.5,-0.5,0.5,1.5,2.5}{%
-					\tkzVLine[dashed]{\i*pi}
-				}
-			\end{tikzpicture}
-			\caption{\( y = \tan x \)}
-		\end{figure}
-		\item 余切函数
-		\begin{figure}[!htb]
-			\centering
-			\begin{tikzpicture}[scale=0.5]
-				\draw[->,black] (0,-5) -- (0,5);
-				\draw[->,black] (-2.3*pi,0) -- (2.3*pi,0);
-				\node[below] at (-0.22,0) {\( O \)};
-				
-				\tkzInit[xmin=-2*pi,xmax=2*pi,ymin=-5,ymax=5]
-				\foreach \xxx in {-2,-1,1,2}{%
-					\tkzVLine[dashed]{\xxx*pi}
-				}
-				\foreach \i in {-2,-1,0,1}{%
-					\tkzFct[samples=400,domain=\i*pi+0.01:(\i + 1)*pi-0.01]{1/tan(x)}
-				}
-			\end{tikzpicture}
-			\caption{\( y = \cot x \)}
-		\end{figure}
-		\newpage
-		\item 正割函数
-		\begin{figure}[!htb]
-			\centering
-			\begin{tikzpicture}[scale=0.5]
-				\draw[->,black] (-1.8*pi,0) -- (1.8*pi,0);
-				\draw[->,black] (0,-5) -- (0,5);
-				
-				\tkzInit[xmin=-1.5*pi,xmax=1.5*pi,ymin=-5,ymax=5]
-				\foreach \i in {-1.5,-0.5,0.5} {
-					\tkzFct[domain=\i*pi+0.01:(\i+1)*pi-0.01]{1/cos(x)}
-				}
-				\foreach \i in {-1.5,-0.5,0.5,1.5}{%
-					\tkzVLine[dashed]{\i*pi}
-				}
-			\end{tikzpicture}
-			\caption{\( y = \sec x \)}
-		\end{figure}
-		\item 余割函数
-		\begin{figure}[!htb]
-			\centering
-			\begin{tikzpicture}[scale=0.5]
-				\draw[->,black] (-1.3*pi,0) -- (2.3*pi,0);
-				\draw[->,black] (0,-5) -- (0,5);
-				
-				\tkzInit[xmin=-pi,xmax=2*pi,ymax=5,ymin=-5]
-				\foreach \i in {-1,1,2}{%
-					\tkzVLine[dashed]{\i*pi}
-				}
-				\foreach \i in {-1,0,1}{%
-					\tkzFct[samples=400,domain=\i*pi+0.01:(\i+1)*pi-0.01]{1/sin(x)}
-				}
-			\end{tikzpicture}
-			\caption{\( y = \csc x \)}
-		\end{figure}
-	\end{enumerate}
-	\item 反三角函数
-		\begin{enumerate}
-			\item 反正弦函数
-			\begin{figure}[!htb]
-				\centering
-				\begin{tikzpicture}[scale=0.5]
-					\draw[->,black] (-1.5,0) -- (1.5,0);
-					\draw[->,black] (0,-1.1*pi) -- (0,1.1*pi);
-					
-					\tkzInit[xmin=-1.5,xmax=1.5,ymin=-pi,ymax=pi]
-					\tkzFct[samples=400,domain = -1:1]{asin(x)}
-				\end{tikzpicture}
-				\caption{\( y=\arcsin x \)}
-			\end{figure}
-			\newpage
-			\item 反余弦函数
-			\begin{figure}[!htb]
-				\centering
-				\begin{tikzpicture}[scale=0.5]
-					\draw[->,black] (-1.5,0) -- (1.5,0);
-					\draw[->,black] (0,-0.6*pi) -- (0,1.7*pi);
-					
-					\tkzInit[xmin=-1.5,xmax=1.5,ymin=-pi,ymax=pi]
-					\tkzFct[samples=400,domain = -1:1]{acos(x)}
-				\end{tikzpicture}
-				\caption{\( y = \arccos x \)}
-			\end{figure}
-			\item 反正切函数
-			\begin{figure}[!htb]
-				\centering
-				\begin{tikzpicture}[scale=0.5]
-					\draw[->,black] (-5,0) -- (5,0);
-					\draw[->,black] (0,-0.6*pi) -- (0,0.7*pi);
-					
-					\tkzInit[xmin=-4,xmax=4,ymin=-2,ymax=2]
-					\tkzFct[samples=400,domain = -4.5:4.5]{atan(x)}
-					\foreach \i in {-0.5,0.5}{%
-						\tkzHLine[dashed]{\i*pi}
-					}
-				\end{tikzpicture}
-				\caption{\( y = \arctan x \)}
-			\end{figure}
-			\item 反余切函数
-			\begin{figure}[!htb]
-				\centering
-				\begin{tikzpicture}[scale=0.5]
-					\draw[->,black] (0,-1) -- (0,1.65*pi);
-					\draw[->,black] (-5,0) -- (5,0);
-					\node[below] at (-0.3,0) {\( O \)};
-					\node[below] at (5,0) {\( x \)};
-					\node[left] at (0,1.65*pi) {\( y \)};
-					
-					\tkzInit[xmax=4.8,xmin=-4.8,ymin=0,ymax=pi]
-					\tkzFct[samples=400,domain = -4.8:0]{atan(1/x)+pi}
-					\tkzFct[samples=400,domain = 0:4.8]{atan(1/x)}
-					\tkzHLine[dashed]{pi}
-				\end{tikzpicture}
-				\caption{\( y = \mathrm{arccot}\ x \)}
-			\end{figure}
-		\end{enumerate}
-		
-				
-\end{itemize}
-\chapter{几种常见的曲线}
+%%				\tkzFct[samples=1, domain=0:2]{2}
+%%				\tkzFct[samples=1, domain=0:1,style=dashed]{1}
+%				\tkzFct[samples=400, domain=0:5]{x**3}
+%				\tkzFct[samples=400, domain=0:5]{x**2}
+%				\tkzFct[samples=400, domain=0:5]{x**(1.5)}
+%%				\tkzVLine{2}
+%%				\tkzVLine[style=dashed,domain=0:1]{1}
+%				\tkzFct[samples=2, domain=0:5]{x}
+%				\tkzFct[samples=400, domain=0:5]{x**(2./3.)}
+%				\tkzFct[samples=400, domain=0:5]{x**(1./3.)}
+%				\tkzFct[samples=400, domain=0:5]{x**(.5)}
+%				
+%				\draw[dashed,black] (0,1) -- (1,1);
+%				\draw[dashed,black] (1,0) -- (1,1);
+%			\end{tikzpicture}
+%			\qquad\qquad
+%			\begin{tikzpicture}[scale=1.5]
+%				\draw[->,black] (0,0) -- (2.5,0);
+%				\node[below] at (2.5,0) {\( x \)};
+%				\draw[->,black] (0,0) -- (0,2.5);
+%				\node[left] at (0,2.5) {\( y \)};
+%				\draw[dashed,black] (0,1) -- (1,1);
+%				\draw[dashed,black] (1,0) -- (1,1);
+%				\node[left] at (0,0) {\( O \)};
+%				\node[left] at (0,1) {\( 1 \)};
+%				\node[below] at (1,0) {\( 1 \)};
+%				
+%				\tkzInit[xmax=2,ymax=2]
+%				\tkzFct[samples=400,domain=0.1:2]{x**(-1./3)}
+%				\tkzFct[samples=400,domain=0.1:2]{x**(-0.5)}
+%				\tkzFct[samples=400,domain=0.1:2]{x**(-1)}
+%				\tkzFct[samples=400,domain=0.1:2]{x**(-2)}
+%				\tkzFct[samples=400,domain=0.5:2]{x**(-3)}
+%				\tkzVLine{2}
+%				\tkzHLine{2}
+%			\end{tikzpicture}
+%			\caption{\( y=x^{\mu} \)}
+%		\end{figure}
+%	\item 指数函数
+%		\begin{figure}[!htb]
+%			\centering
+%			\begin{tikzpicture}[scale=1]
+%				\tkzInit[xmax=3,xmin=-3,ymax=5]
+%				\tkzFct[samples=400,domain=-2:1.5]{exp(x)}
+%				\tkzFct[samples=400,domain=-1.5:2]{exp(-x)}
+%				
+%				\draw[->,black] (-3,0) -- (3,0);
+%				\draw[->,black] (0,0) -- (0,5);
+%				\node[below] (O) at (0,0) {\( O \)};
+%				\node[below] (x) at (3,0) {\( x \)};
+%				\node[left] (y) at (0,5) {\( y \)};
+%				\node[left] (1) at (0,1) {\( 1 \)};
+%				\node[below] (1.) at (1,0) {\( 1 \)};
+%				\node[right] (>) at (1,2) {\( a > 1 \)};
+%				\node[left] (<) at (-1,2) {\( 0<a<1 \)};
+%			\end{tikzpicture}
+%			\caption{\( y=a^{x} \)}
+%		\end{figure}
+%	\item 对数函数
+%		\begin{figure}[!htb]
+%			\centering
+%			\begin{tikzpicture}[scale=1]
+%				\draw[->, black] (0,-3) -- (0,3);
+%				\draw[->, black] (0,0) -- (5,0);
+%				\node[left] at (0,0) {\( O \)};
+%				\node[below] at (5,0) {\( x \)};
+%				\node[left] at (0,3) {\( y \)};
+%				\node[left] at (0,1) {\( 1 \)};
+%				\node[below] at (1,0) {\( 1 \)};
+%				\node[below] at (3,0.9) {\( a>1 \)};
+%				\node[above] at (3,-0.9) {\( 0<a<1 \)};
+%				
+%				\tkzInit[xmax=4,ymax=2,ymin=-2]
+%				\tkzFct[samples=400,domain=0:4]{log(x)}
+%				\tkzFct[samples=400,domain=0:4]{-log(x)}
+%			\end{tikzpicture}
+%			\caption{\( y=\log_{a} x \)}
+%		\end{figure}
+%	\newpage
+%	\item 三角函数
+%	\begin{enumerate}
+%		\item 正弦函数
+%		\begin{figure}[!htb]
+%			\centering
+%			\begin{tikzpicture}[scale=1]
+%				\draw[->,black] (-2.3*pi,0) -- (2.3*pi,0);
+%				\draw[->,black] (0,-1.5) -- (0,1.5);
+%				\draw[black] (0,-1) -- (0.1,-1);
+%				\draw[black] (0,1) -- (0.1,1);
+%				\node[below] at (0.15,0) {\( O \)};
+%				\node[left] at (0,1) {\( 1 \)};
+%				\node[left] at (0,-1) {\( -1 \)};
+%				\foreach \myx in {-2*pi,-1.5*pi,-1*pi,-0.5*pi,0.5*pi,1*pi,1.5*pi,2*pi}{%
+%					\draw (\myx,0) -- (\myx,0.1);
+%				}
+%				\node[below] at (2.1*pi,0) {\( 2\pi \)};
+%				\node[below] at (1.5*pi,0) {\( \frac{3\pi}{2} \)};
+%				\node[below] at (0.9*pi,0) {\( \pi \)};
+%				\node[below] at (0.5*pi,0) {\( \frac{\pi}{2} \)};
+%				
+%				\node[below] at (-1.9*pi,0) {\( -2\pi \)};
+%				\node[below] at (-1.5*pi,0) {\( -\frac{3\pi}{2} \)};
+%				\node[below] at (-1.1*pi,0) {\( -\pi \)};
+%				\node[below] at (-0.5*pi,0) {\( -\frac{\pi}{2} \)};
+%				
+%				\tkzInit[xmin=-2.2*pi,xmax=2.2*pi,ymin=-1.5,ymax=1.5]
+%				\tkzFct[color=black,thick,domain = -2.2*pi:2.2*pi]{sin(x)}
+%			\end{tikzpicture}
+%			\caption{\( y = \sin x \)}
+%		\end{figure}
+%		\item 余弦函数
+%		\begin{figure}[!htb]
+%			\centering
+%			\begin{tikzpicture}[scale=1]
+%				\draw[->,black] (-1.8*pi,0) -- (2.8*pi,0);
+%				\draw[->,black] (0,-1.5) -- (0,1.5);
+%				\draw[black] (0,-1) -- (0.1,-1);
+%				%				\draw[black] (0,1) -- (0.1,1);
+%				\node[below] at (0.15,0) {\( O \)};
+%				\node[left] at (0,1) {\( 1 \)};
+%				\node[left] at (0,-1) {\( -1 \)};
+%				\foreach \myx in {-1.5*pi,-1*pi,-0.5*pi,0.5*pi,1*pi,1.5*pi,2*pi,2.5*pi}{%
+%					\draw (\myx,0) -- (\myx,0.1);
+%				}
+%				\node[below] at (2.5*pi,0) {\( \frac{5\pi}{2} \)};
+%				\node[below] at (2.1*pi,0) {\( 2\pi \)};
+%				\node[below] at (1.55*pi,0) {\( \frac{3\pi}{2} \)};
+%				\node[below] at (1*pi,0) {\( \pi \)};
+%				\node[below] at (0.5*pi,0) {\( \frac{\pi}{2} \)};
+%				
+%				%				\node[below] at (-2*pi,0) {\( -2\pi \)};
+%				\node[below] at (-1.6*pi,0) {\( -\frac{3\pi}{2} \)};
+%				\node[below] at (-1*pi,0) {\( -\pi \)};
+%				\node[below] at (-0.5*pi,0) {\( -\frac{\pi}{2} \)};
+%				
+%				\tkzInit[xmin=-1.8*pi,xmax=2.7*pi,ymin=-1.5,ymax=1.5]
+%				\tkzFct[color=black,thick,domain = -1.8*pi:2.7*pi]{cos(x)}
+%			\end{tikzpicture}
+%			\caption{\( y = \cos x \)}
+%		\end{figure}
+%		\item 正切函数
+%		\begin{figure}[!htb]
+%			\centering
+%			\begin{tikzpicture}[scale=0.5]
+%				\draw[->,black] (0,-5) -- (0,5);
+%				\draw[->,black] (-1.8*pi,0) -- (2.8*pi,0);
+%				
+%				\tkzInit[xmin=-1.5*pi,xmax=2.5*pi,ymin=-5,ymax=5]
+%				\foreach \i in {-1.5,-0.5,0.5,1.5} {
+%					\tkzFct[domain=\i*pi+0.01:(\i+1)*pi-0.01]{tan(\x)}
+%				}
+%				\foreach \i in {-1.5,-0.5,0.5,1.5,2.5}{%
+%					\tkzVLine[dashed]{\i*pi}
+%				}
+%			\end{tikzpicture}
+%			\caption{\( y = \tan x \)}
+%		\end{figure}
+%		\item 余切函数
+%		\begin{figure}[!htb]
+%			\centering
+%			\begin{tikzpicture}[scale=0.5]
+%				\draw[->,black] (0,-5) -- (0,5);
+%				\draw[->,black] (-2.3*pi,0) -- (2.3*pi,0);
+%				\node[below] at (-0.22,0) {\( O \)};
+%				
+%				\tkzInit[xmin=-2*pi,xmax=2*pi,ymin=-5,ymax=5]
+%				\foreach \xxx in {-2,-1,1,2}{%
+%					\tkzVLine[dashed]{\xxx*pi}
+%				}
+%				\foreach \i in {-2,-1,0,1}{%
+%					\tkzFct[samples=400,domain=\i*pi+0.01:(\i + 1)*pi-0.01]{1/tan(x)}
+%				}
+%			\end{tikzpicture}
+%			\caption{\( y = \cot x \)}
+%		\end{figure}
+%		\newpage
+%		\item 正割函数
+%		\begin{figure}[!htb]
+%			\centering
+%			\begin{tikzpicture}[scale=0.5]
+%				\draw[->,black] (-1.8*pi,0) -- (1.8*pi,0);
+%				\draw[->,black] (0,-5) -- (0,5);
+%				
+%				\tkzInit[xmin=-1.5*pi,xmax=1.5*pi,ymin=-5,ymax=5]
+%				\foreach \i in {-1.5,-0.5,0.5} {
+%					\tkzFct[domain=\i*pi+0.01:(\i+1)*pi-0.01]{1/cos(x)}
+%				}
+%				\foreach \i in {-1.5,-0.5,0.5,1.5}{%
+%					\tkzVLine[dashed]{\i*pi}
+%				}
+%			\end{tikzpicture}
+%			\caption{\( y = \sec x \)}
+%		\end{figure}
+%		\item 余割函数
+%		\begin{figure}[!htb]
+%			\centering
+%			\begin{tikzpicture}[scale=0.5]
+%				\draw[->,black] (-1.3*pi,0) -- (2.3*pi,0);
+%				\draw[->,black] (0,-5) -- (0,5);
+%				
+%				\tkzInit[xmin=-pi,xmax=2*pi,ymax=5,ymin=-5]
+%				\foreach \i in {-1,1,2}{%
+%					\tkzVLine[dashed]{\i*pi}
+%				}
+%				\foreach \i in {-1,0,1}{%
+%					\tkzFct[samples=400,domain=\i*pi+0.01:(\i+1)*pi-0.01]{1/sin(x)}
+%				}
+%			\end{tikzpicture}
+%			\caption{\( y = \csc x \)}
+%		\end{figure}
+%	\end{enumerate}
+%	\item 反三角函数
+%		\begin{enumerate}
+%			\item 反正弦函数
+%			\begin{figure}[!htb]
+%				\centering
+%				\begin{tikzpicture}[scale=0.5]
+%					\draw[->,black] (-1.5,0) -- (1.5,0);
+%					\draw[->,black] (0,-1.1*pi) -- (0,1.1*pi);
+%					
+%					\tkzInit[xmin=-1.5,xmax=1.5,ymin=-pi,ymax=pi]
+%					\tkzFct[samples=400,domain = -1:1]{asin(x)}
+%				\end{tikzpicture}
+%				\caption{\( y=\arcsin x \)}
+%			\end{figure}
+%			\newpage
+%			\item 反余弦函数
+%			\begin{figure}[!htb]
+%				\centering
+%				\begin{tikzpicture}[scale=0.5]
+%					\draw[->,black] (-1.5,0) -- (1.5,0);
+%					\draw[->,black] (0,-0.6*pi) -- (0,1.7*pi);
+%					
+%					\tkzInit[xmin=-1.5,xmax=1.5,ymin=-pi,ymax=pi]
+%					\tkzFct[samples=400,domain = -1:1]{acos(x)}
+%				\end{tikzpicture}
+%				\caption{\( y = \arccos x \)}
+%			\end{figure}
+%			\item 反正切函数
+%			\begin{figure}[!htb]
+%				\centering
+%				\begin{tikzpicture}[scale=0.5]
+%					\draw[->,black] (-5,0) -- (5,0);
+%					\draw[->,black] (0,-0.6*pi) -- (0,0.7*pi);
+%					
+%					\tkzInit[xmin=-4,xmax=4,ymin=-2,ymax=2]
+%					\tkzFct[samples=400,domain = -4.5:4.5]{atan(x)}
+%					\foreach \i in {-0.5,0.5}{%
+%						\tkzHLine[dashed]{\i*pi}
+%					}
+%				\end{tikzpicture}
+%				\caption{\( y = \arctan x \)}
+%			\end{figure}
+%			\item 反余切函数
+%			\begin{figure}[!htb]
+%				\centering
+%				\begin{tikzpicture}[scale=0.5]
+%					\draw[->,black] (0,-1) -- (0,1.65*pi);
+%					\draw[->,black] (-5,0) -- (5,0);
+%					\node[below] at (-0.3,0) {\( O \)};
+%					\node[below] at (5,0) {\( x \)};
+%					\node[left] at (0,1.65*pi) {\( y \)};
+%					
+%					\tkzInit[xmax=4.8,xmin=-4.8,ymin=0,ymax=pi]
+%					\tkzFct[samples=400,domain = -4.8:0]{atan(1/x)+pi}
+%					\tkzFct[samples=400,domain = 0:4.8]{atan(1/x)}
+%					\tkzHLine[dashed]{pi}
+%				\end{tikzpicture}
+%				\caption{\( y = \mathrm{arccot}\ x \)}
+%			\end{figure}
+%		\end{enumerate}
+%		
+%				
+%\end{itemize}
+%\chapter{几种常见的曲线}
 
 \end{document}
