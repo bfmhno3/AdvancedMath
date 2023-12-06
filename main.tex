@@ -1,22 +1,19 @@
 \documentclass[lang=cn,10pt]{elegantbook}
 
+% 封面
 \title{高等数学：基于 \LaTeX{} 的个人知识总结}
 \subtitle{Advanced Math: Based on \LaTeX{}}
-
 \author{彭正萧 \& PENG Zhengxiao}
 \institute{西北农林科技大学}
 \date{始于2023年11月19日}
 \version{第七版\ 上册（同济大学数学系\ 编）}
-\bioinfo{模板}{\href{https://github.com/ElegantLaTeX/}{ElegantLaTeX}}
-
+\bioinfo{模板}{\href{https://github.com/ElegantLaTeX/}{Elegant\LaTeX}}
 \extrainfo{不要以为抹消过去，重新来过，即可发生什么改变。—— 比企谷八幡}
-
 \setcounter{tocdepth}{3}
-
 \logo{logo.pdf}
 \cover{cover.jpg}
 
-% 本文档命令
+% 载入宏包
 \usepackage{tkz-fct}
 \usepackage{ulem}
 \usepackage{array}
@@ -24,8 +21,9 @@
 \usepackage{circledsteps}
 \usepackage{mathtools}
 
-
+% 自定义命令
 \newcommand{\ccr}[1]{\makecell{{\color{#1}\rule{1cm}{1cm}}}}
+\newcommand{\D}{\mathrm{d}}
 \newcommand{\R}{\mathbb{R}}
 \newcommand{\arccot}{\mathrm{arccot}}
 \newcommand{\sh}{\mathrm{sh}\ }% 双曲正弦
@@ -51,14 +49,8 @@
 
 
 \chapter{函数与极限}
-\begin{introduction}
-	\item 你是谁
-	\item 我是谁
-	\item 我不知道
-\end{introduction}
-\section{映射与函数}
 
-本节主要介绍映射、函数及有关概念，函数的性质与运算等。
+\section{映射与函数}
 
 \subsection{映射}
 
@@ -508,10 +500,10 @@
 
 \section{无穷小的比较}
 \begin{definition}
-	如果\( \lim \dfrac{\beta}{\alpha} = 0 \)，那么就说\( \beta \)是比\( \alpha \)\uwave{高阶的无穷小}，记作\( \beta = o(\alpha) \);\\
-	如果\( \lim \dfrac{\beta}{\alpha} = \infty \)，那么就说\( \beta \)是比\( \alpha \)\uwave{低阶的无穷小};\\
-	如果\( \lim \dfrac{\beta}{\alpha} = c \neq 0 \)，那么就说\( \beta \)与\( \alpha \)是\uwave{同阶无穷小};\\
-	如果\( \lim \dfrac{\beta}{\alpha^{k}} = c \neq 0,\ k > 0 \)，那么就说\( \beta \)是关于\( \alpha \)的\uwave{\( k \)阶无穷小};\\
+	如果\( \lim \dfrac{\beta}{\alpha} = 0 \)，那么就说\( \beta \)是比\( \alpha \)\uwave{高阶的无穷小}，记作\( \beta = o(\alpha) \);\\\\
+	如果\( \lim \dfrac{\beta}{\alpha} = \infty \)，那么就说\( \beta \)是比\( \alpha \)\uwave{低阶的无穷小};\\\\
+	如果\( \lim \dfrac{\beta}{\alpha} = c \neq 0 \)，那么就说\( \beta \)与\( \alpha \)是\uwave{同阶无穷小};\\\\
+	如果\( \lim \dfrac{\beta}{\alpha^{k}} = c \neq 0,\ k > 0 \)，那么就说\( \beta \)是关于\( \alpha \)的\uwave{\( k \)阶无穷小};\\\\
 	如果\( \lim \dfrac{\beta}{\alpha} = 1 \)，那么就说\( \beta \)与\( \alpha \)是\uwave{等价无穷小}，记作\( \alpha \sim \beta \).
 \end{definition}
 
@@ -600,60 +592,124 @@
 	\end{example}
 \end{note}
 
+\begin{theorem}
+	设函数\( y = f[g(x)] \)是由函数\( u = g(x) \)与函数\( y = f(u) \)复合而成，\( U(x_{0}) \in D_{f \circ g} \).若函数\( u = g(x) \)在\( x = x_{0} \)连续，且\( g(x_{0}) = u_{0} \)，而函数\( y = f(u) \)在\( u = u_{0} \)连续，则复合函数\( y = f[g(x)] \)在\( x = x_{0} \)也连续.
+\end{theorem}
 
+\begin{conclusion}
+	基本初等函数在它们的定义域内都是连续的.
+\end{conclusion}
 
+\begin{conclusion}
+	一切初等函数在其定义区间内都是连续的.所谓\uwave{定于区间}，就是包含在定义域内的区间
+\end{conclusion}
 
+\begin{example}
+	\( y = \sqrt{x^{2}(x - 1)} \)的定义域为\( D = \{0\}\cup [1, +\infty) \)，但是不讨论函数在\(  x = 0 \)处的连续性，因为\( x = 0 \)是\uwave{孤立点}.
+\end{example}
 
+\begin{definition}[幂指函数]
+	一般地，对于形如\( u(x)^{v(x)}\quad(u(x) > 0, u(x) \neq 1) \)的函数（通常称为\uwave{幂指函数}），如果
+	\[ \lim u(x) = a > 0,\ \lim v(x) = b \]
+	那么
+	\[ \lim u(x)^{v(x)} = a^{b} \]
+\end{definition}
+
+\section{闭区间上连续函数的性质}
+
+\subsection{有界性与最大值最小值定理}
+\begin{theorem}[有界性与最大值最小值定理]
+	在闭区间上连续的函数在该区间上有界且一定能取得它的最大值和最小值.
+\end{theorem}
+
+\subsection{零点定理与介值定理}
+
+\begin{theorem}[零点定理]
+	设函数\( f(x) \)在闭区间\( [a,b] \)上连续，且\( f(a) \)与\( f(b) \)异号（即\( f(a) \cdot f(b) < 0 \)），则在开区间\( (a,b) \)内至少有一点\( \xi \)，使得
+	\[ f(\xi) = 0 \]
+\end{theorem}
+
+\begin{theorem}[介值定理]
+	设函数\( f(x) \)在闭区间\( [a,b] \)上连续，且在这区间的端点取得不同的函数值
+	\[ f(x) = A \quad \text{及}\quad f(b) = B \]
+	则对于\( A \)与\( B \)之间的任意一个数\( C \)，在开区间\( (a,b) \)内至少有一点\( \xi \)，使得
+	\[ f(\xi) = C \quad (a < \xi < b) \]
+\end{theorem}
+
+\begin{corollary}
+	在闭区间\( [a,b] \)上连续的函数\( f(x) \)的值域为闭区间\( [m,M] \)，其中\( m \)与\( M \)依次为\( f(x) \)在\( [a,b] \)上的最小值与最大值.
+\end{corollary}
+
+%\subsection{一致连续性}
+%
+%\begin{definition}
+%	设函数\( f(x) \)在区间\( I \)上有定义.如果对于任意给定的正数\( \varepsilon \)，总存在整数\( \delta \)，使得对于区间\( I \)上的任意两点\( x_{1} \)、\( x_{2} \).当\( |x_{1} - x_{2} | < \delta \)时，有
+%	\[ |f(x_{1}) - f(x_{2}) | < \varepsilon \]
+%	那么称函数\( f(x) \)在区间\( I \)上一致连续.
+%\end{definition}
+
+\newpage
+\begin{problemset}[错题集]
+	\item 
+\end{problemset}
 
 \chapter{导数与微分}
 
-\begin{problemset}[错题集]
-	\item 你是谁\adftripleflourishright
-\end{problemset}
+\section{导数概念}
 
-\begin{conclusion}
-	我是IKun.
-\end{conclusion}
+\begin{definition}[导数]
+	设函数\( y = f(x) \)在点\( x_{0} \)的某个邻域内有定义，当自变量\( x \)在\( x_{0} \)处取得增量\( \Delta x \)（点\( x_{0} + \Delta x \)仍在该邻域内）时，相应的，因变量取得增量\( \Delta y = f(x_{0} + \Delta x) - f(x_{0}) \)；如果\( \Delta y \)与\( \Delta x \)之比当\( \Delta x \to 0 \)时的极限存在，那么称函数\( y = f(x) \)在点\( x_{0} \)处\uwave{可导}，并称这个极限为函数\( y = f(x) \)在点\( x_{0} \)处的\uwave{导数}，记为\( f'(x_{0}) \)，即
+	\[ f'(x_{0}) = \lim\limits_{\Delta x \to 0}\dfrac{\Delta y}{\Delta x} = \lim\limits_{\Delta x \to 0}\dfrac{f(x_{0} + \Delta x) - f(x_{0})}{\Delta x} \]
+	也可记作\( y'|_{x = x_{0}},\ \left.\dfrac{\D y}{\D x}\right|_{x = x_{0}}\ \text{或}\left.\dfrac{\D f(x)}{\D x}\right|_{x = x_{0}} \)
+\end{definition}
 
-\begin{assumption}
-	我不是IKun.
-\end{assumption}
-
-\begin{property}
-	你是谁呀
-\end{property}
-
-\begin{solution}
-	你是谁
-\end{solution}
-
-\begin{example}
-	你是谁
-\end{example}
-
-\begin{problem}
-	你是谁呀
-\end{problem}
-
-\begin{exercise}
-	你是谁
-\end{exercise}
-
-\begin{theorem}
-	你是谁
-\end{theorem}
-
-\begin{lemma}
-	你是谁
-\end{lemma}
-
-\begin{corollary}
-	你是谁
-\end{corollary}
-
-\begin{axiom}
-	你是谁
-\end{axiom}
+%\begin{problemset}[错题集]
+%	\item 你是谁\adftripleflourishright
+%\end{problemset}
+%
+%\begin{conclusion}
+%	我是IKun.
+%\end{conclusion}
+%
+%\begin{assumption}
+%	我不是IKun.
+%\end{assumption}
+%
+%\begin{property}
+%	你是谁呀
+%\end{property}
+%
+%\begin{solution}
+%	你是谁
+%\end{solution}
+%
+%\begin{example}
+%	你是谁
+%\end{example}
+%
+%\begin{problem}
+%	你是谁呀
+%\end{problem}
+%
+%\begin{exercise}
+%	你是谁
+%\end{exercise}
+%
+%\begin{theorem}
+%	你是谁
+%\end{theorem}
+%
+%\begin{lemma}
+%	你是谁
+%\end{lemma}
+%
+%\begin{corollary}
+%	你是谁
+%\end{corollary}
+%
+%\begin{axiom}
+%	你是谁
+%\end{axiom}
 
 
 
@@ -1112,5 +1168,5 @@
 %				
 %\end{itemize}
 %\chapter{几种常见的曲线}
-
+%
 \end{document}
