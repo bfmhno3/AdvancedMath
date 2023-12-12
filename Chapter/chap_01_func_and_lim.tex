@@ -1,0 +1,604 @@
+\chapter{函数与极限}
+
+\section{映射与函数}
+
+\subsection{映射}
+
+\begin{definition}
+	设\(X\)、\( Y \)是两个非空集合，如果存在一个法则\( f \)，使得对\( X \)中每个元素\( x \)，按法则\( f \)，在\( Y \)中有唯一确定的元素\( y \)与之对应，那么称\( f \)为从\( X \)到\( Y \)的映射，记作
+	\[ f:X \rightarrow Y \]
+	其中\( y \)称为元素\( x \)（在映射\( f \)下）的像，并记作\( f(x) \)，即
+	\[ y = f(x) \]
+	而元素\( x \)称为元素\( y \)（在映射\( f \)下）的一个原像；集合\( X \)称为映射\( f \)的定义域，记作\( D_{f} \)，即\( D_{f} = X \)；\( X \)中所有元素的像所组成的集合称为映射\( f \)的值域，记作\( R_{f} \)或\( f(X) \)，即
+	\[ R_{f} = f(X) = \{ f(x)\ |\ x \in X\}\].
+\end{definition}
+
+\begin{note}
+	\begin{enumerate}
+		\item 构成映射的{\heiti 三要素}：
+		\begin{enumerate}
+			\item 集合\( X \)，即{\heiti 定义域}\( D_{f} = X \).
+			\item 集合\( Y \)，即{\heiti 值域}的范围\( R_{f} \subset Y \).
+			\item {\heiti 对应法则\( f \)}，使对每个\( x \in X \)，有唯一确定的\( y = f(x) \)与之对应.
+		\end{enumerate}
+		\item 可以一对多，不能多对一：对每个\( x \in X \)，元素\( x \)的像\( y \)是唯一的；而对每个\( y \in R_{f} \)，元素\( y \)的原像不一定是唯一的；映射\( f \)的值域\( R_{f} \)是\( Y \)的一个子集，即\( R_{f} \subset Y \)，不一定\( R_{f} = Y \).
+		\item 映射又称\uwave{算子}，根据\( X \)、\( Y \)的不同情形，在不同的数学分支中，映射又有不同的惯用名称，例如：
+		\begin{enumerate}
+			\item {\heiti 泛函}：从非空集\( X \)到数集\( Y \)的映射又称为\( X \)上的\uwave{泛函}。
+			\item {\heiti 变换}：从非空集\( X \)到它自身的映射又称为\( X \)上的\uwave{变换}。
+			\item {\heiti 函数}：从实数集\( \R \)（或其子集）\( X \)到实数集\( Y \)的映射通常称为定义在\( X \)上的\uwave{函数}。
+		\end{enumerate}
+	\end{enumerate}
+\end{note}
+
+\begin{definition}[逆映射]
+	设\( f \)是\( X \)到\( Y \)的单射，则由定义，对每个\( y \in R_{f} \)，有唯一的\( x \in X \)，适合\( f(x) y \)。于是，我们可定义一个从\( R_{f} \)到\( X \)的新映射\( g \)，即
+	\[ g: R_{f} \rightarrow X \]
+	对每个\( y \in R_{f} \)，规定\( g(y) = x \)，这\( x \)满足\( f(x) = y \)。这个映射\( g \)称为\( f \)的逆映射，记作\( f^{-1} \)，其定义域\( D_{f^{-1}} = R_{f} \)，值域\( R_{f^{-1}} = X \)。
+\end{definition}
+
+\begin{note}
+	只有单射才存在逆映射。
+\end{note}
+
+\begin{definition}[复合映射]
+	设有两个映射
+	\[ g:X \rightarrow Y_{1}, \qquad\qquad f:Y_{2} \rightarrow Z, \]
+	其中\( Y_{1} \subset Y_{2} \)，则由映射\( g \)和\( f \)可以定出一个从\( X \)到\( Z \)的对应法则，它将每个\( x \in X \)映成\( f[g(x)] \in Z \)。显然，这个对应法则确定了一个从\( X \)到\( Z \)的映射，这个映射称为映射\( g \)个\( f \)构成的{\heiti 复合映射}，记作\( f \circ g \)，即
+	\[ f \circ g: X \rightarrow Z,\ (f \circ g)(x) = f[g(x)],\ x \in X \]
+\end{definition}
+
+\begin{note}
+	\begin{enumerate}
+		\item \textcolor{red}{\( f \circ g \)有意义并不表示\( g \circ f \)也有意义}。
+		\item \heiti 即使\( f \circ g \)与\( g \circ f \)都有意义，复合映射\( f \circ g \)与\( g \circ f \)也未必相同。
+	\end{enumerate}
+\end{note}
+
+\subsection{函数}
+\begin{definition}[函数的概念]
+	设数集\( D \subset \R \)，则称映射\( f:D \rightarrow \R \)，为定义在\( D \)上的\uwave{函数}，通常简记为
+	\[ y = f(x),\ x \in D \]
+	其中\( x \)称为\uwave{自变量}，\( y \)称为\uwave{因变量}，\( D \)称为\uwave{定义域}，记作\( D_{f} \)，即\( D_{f} = D \)。
+\end{definition}
+
+\begin{note}
+	\begin{enumerate}
+		\item \( f \)表示自变量\( x \)和因变量\( y \)之间的对应法则，而\( f(x) \)表示自变量\( x \)对应的函数值。
+		\item 可以直接用因变量的记号来表示函数，即把函数记作\( y = y(x) \)。
+		\item 两个函数相同的{\heiti 充分必要条件}是：两个函数的{\heiti 定义域}相同，{\heiti 对应法则}也相同。
+	\end{enumerate}
+\end{note}
+
+\begin{definition}[函数的有界性]
+	设函数\( f(x) \)的定义域为\( D \)，数集\( X \subset D \)。如果存在数\( K_{1} \)，使得
+	\[ f(x) \leqslant K_{1} \]
+	对任一\( x \in X \)都成立，那么称函数\( f(x) \)在\( X \)上有\uwave{上界}，而\( K_{1} \)称为函数\( f(X) \)在\( X \)上的一个上界。如果存在数\( K_{2} \)，使得
+	\[ f(x) \geqslant K_{2} \]
+	对任一\( x \in X \)都成立，那么称函数\( f(x) \)在\( X \)上有\uwave{下界}，而\( K_{2} \)称为函数\( f(x) \)在\( X \)上的一个下界。如果存在正数\( M \)，使得
+	\[ |\ f(x)\ | \leqslant M \]
+	对任一\( x \in X \)都成立，那么称函数\( f(x) \)在\( X \)上有界。如果这样的\( M \)不存在，就称函数\( f(x) \)在\( X \)上无界；这就是说，如果对于任何正数\( M \)，总存在\( x_{1} \in X \)，使\( |\ f(x_{1})\ | > M \)，那么函数\( f(x) \)在\( X \)上无界。
+\end{definition}
+
+\begin{note}
+	函数\( f(x) \)在\( X \)上有界的{\heiti 充分必要条件}是它在\( X \)上\uwave{既有上界又有下界}。
+\end{note}
+
+\begin{definition}[函数的单调性]
+	设函数\( f(x) \)的定义域为\( D \)，区间\( I \subset D \)。如果对于区间\( I \)上任意两点\( x_{1} \)及\( x_{2} \)，当\( x_{1} < x_{2} \)时，恒有
+	\[ f(x_{1}) < f(x_{2}) \]
+	那么称函数\( f(x) \)在区间\( I \)上是\uwave{单调增加}的；如果对于区间\( I \)上任意两点\( x_{1} \)及\( x_{2} \)，当\( x_{1} < x_{2} \)时，恒有
+	\[ f(x_{1}) > f(x_{2}) \]
+	那么称函数\( f(x) \)早区间\( I \)上是\uwave{单调减少}的。单调增加和单调减少的函数统称为\uwave{单调函数}。
+\end{definition}
+
+\begin{note}
+	如果函数\( f(x) \)在其定义域\( D \)的两个真子集\( A \)和\( B \)内单调性相同，并且\( A \cap B = \emptyset \)，在描述函数单调性的时候，不能说函数\( y=f(x) \)在\( A \cup B \)内单调增加（或单调减少），而应该说函数\( y = f(x) \)在\( A \)和\( B \)内单调增加（或单调减少）。
+\end{note}
+
+\begin{definition}[函数的奇偶性]
+	设函数\( f(x) \)的定义域\( D \)关于原点对称，如果对于任一\( x \in D \)
+	\[ f(-x) = f(x) \]
+	恒成立，那么称\( f(x) \)为\uwave{偶函数}。如果对于任一\( x \in D \)
+	\[ f(-x) = -f(x) \]
+	恒成立，那么称\( f(x) \)为\uwave{奇函数}
+\end{definition}
+
+\begin{definition}[函数的周期性]
+	设函数\( f(x) \)的定义域为\( D \)。如果存在一个正数\( I \)，使得对于任一\( x \in D \)有\( (x \pm l) \in D \)，且
+	\[ f(x + l) = f(x) \]
+	恒成立，那么称\( f(x) \)为\uwave{周期函数}，\( l \)称为\( f(x) \)的\uwave{周期}，通常我们说周期函数的周期是指\uwave{最小正周期}
+\end{definition}
+
+\begin{note}
+	周期函数在每个长度为\( l \)的区间上，函数图形有相同的形状。
+\end{note}
+
+\begin{definition}[反函数]
+	设函数\( f : D \rightarrow f(D) \)是单射，则它存在逆映射\( f^{-1}:f(D) \rightarrow D \)，称此映射\( f ^{-1} \)为函数\( f \)的\uwave{反函数}。\\
+	则对每个\( y \in f(D) \)，有唯一的\( x \in D \)，使得\( f(x) = y \)，于是有
+	\[ f^{-1}(y) = x \]
+	这就是说，反函数\( f^{-1} \)的对应法则是完全由函数\( f \)的对应法则所确定的。
+\end{definition}
+
+\begin{note}
+	\begin{enumerate*}[label=\Circled{\arabic*}]
+		\item \( y = f(x) \);\quad
+		\item \( x = f^{-1}(y) \);\quad
+		\item \( y = f^{-1}(x) \).
+	\end{enumerate*}\\
+	\Circled{1}与\Circled{2}的函数图像相同，而\Circled{1}与\Circled{3}（或\Circled{2}与\Circled{3}）的函数图像关于直线\( y = x \)对称。
+\end{note}
+\begin{remark}
+	相对于反函数\( y=f^{-1}(x) \)来说，原来的函数\( y = f(x) \)称为\uwave{直接函数}，而不是``原函数''。
+\end{remark}
+
+\begin{definition}[复合函数]
+	设函数\( y=f(u) \)的定义域\( D_{f} \)，函数\( u=g(x) \)的定义域\( R_{g} \subset D_{f} \)，则由下式确定的函数
+	\[ y = f[\ g(x)\ ],\qquad x \in D_{g} \]
+	称为由函数\( u = g(x) \)与函数\( y = f(u) \)构成的\uwave{复合函数}，它的定义域为\( D_{g} \)，变量\( u \)称为\uwave{中间变量}。
+	函数\( g \)与函数\( f \)的复合函数，即按``先\( g \)后\( f \)''的次序复合的函数，通常记为\( f \circ g \)，即
+	\[ (f \circ g)(x) = f[\ g(x)\ ] \]
+\end{definition}
+
+\begin{note}
+	\( g \)与\( f \)能构成符合函数\( f \circ g \)的条件是：\uwave{函数\( g \)的值域\( R_{g} \)必须包含于函数\( f \)的定义域\( D_{f} \)，即\( R_{f} \subset D_{f} \)。\\否则，不能构成复合函数}。
+\end{note}
+
+\begin{definition}[初等函数]
+	由常数和基本初等函数经过有限次的四则运算和有限次的函数复合步骤所构成并可用\uwave{一个式子}表示的函数，称为\uwave{初等函数}
+\end{definition}
+
+\begin{note}
+	基本初等函数：
+	\begin{enumerate}
+		\item 幂函数：\( y = x^{\mu}\quad (\mu \in \R\text{是常数}) \).
+		\item 指数函数：\( y = a^{x}\quad (a > 0 \text{且}a \neq 1) \).
+		\item 对数函数：\( y = \log_{a}x\quad (a > 0 \text{且}a \neq 1,\ \text{特别当}a = e\text{时},\ \text{记为}y = \ln x) \).
+		\item 三角函数：如\( y = \sin x,\ y = \cos x,\ y = \tan x \)等.
+		\item 反三角函数：如\( y = \arcsin x,\ y = \arccos x,\ y = \arctan x \)等.
+	\end{enumerate}
+\end{note}
+
+\begin{remark}
+	非初等函数一般为分段函数。
+\end{remark}
+
+\section{数列的极限}
+\subsection{数列极限的定义}
+
+\begin{definition}[数列极限]
+	设\( \{x_{n}\} \)为一数列，如果存在常数\( a \)，对于任意给定的正数\( \varepsilon \)（不论它多么小），总存在正整数\( N \)，使得当\( n > N \)时，不等式
+	\[ | x_{n} - a | < \varepsilon \]
+	都成立，那么就称常数\( a \)是\uwave{数列}\( \{x_{n}\} \)\uwave{的极限}，或者称数列\( \{x_{n}\} \)\uwave{收敛于}\( a \)，记为
+	\[ \lim_{n \to \infty}x_{n} = a \]
+	或
+	\[ x_{n} \rightarrow a\quad( n \to \infty) \]
+	如果不存在这样的常数\( a \)，就说数列\( \{x_{n}\} \)没有极限，或者说数列\( \{x_{n}\} \)是\uwave{发散数列}，习惯上也说\( \lim\limits_{n \to \infty}x_{n} \)不存在。
+\end{definition}
+
+\begin{note}
+	\begin{enumerate}
+		\item 正数\( \varepsilon \)可以任意给定意味着不等式\( | x_{n} - a | < \varepsilon \)表达出\( x_{n} \)与\( a \)\uwave{无限接近}的意思.
+		\item \( \lim\limits_{n \to \infty} = a \Leftrightarrow \forall \varepsilon > 0 , \exists \textbf{正整数}N,\textbf{当}n>N,有|x_{n} - a| < \varepsilon \).
+	\end{enumerate}
+\end{note}
+
+\subsection{收敛数列的性质}
+\begin{theorem}[极限的唯一性]
+	如果数列\( \{x_{n}\} \)收敛，那么它的极限唯一.
+\end{theorem}
+
+\begin{remark}
+	用\uwave{反证法}证明.
+\end{remark}
+
+\begin{theorem}[收敛数列的有界性]
+	如果数列\( \{x_{n}\} \)收敛，那么数列\( \{x_{n}\} \)一定有界.
+\end{theorem}
+
+\begin{theorem}[收敛数列的保号性]
+	如果\( \lim\limits_{n \to \infty} x_{n} = a \)，且\( (a > 0) \)（或\( a < 0 \)），那么存在正整数\( N \)，当\( n > N \)时，都有\( x_{n} > 0 \)（或\( x_{n} < 0 \)）.
+\end{theorem}
+
+\begin{corollary}
+	如果数列\( \{x_{n}\} \)从某项起有\( x_{n} \geqslant 0 \)（或\( x_{n} \leqslant 0 \)），且\( \lim\limits_{n \to \infty} x_{n} = a \)，那么\( a \geqslant 0 \)（或\(  a \leqslant 0 \)）.
+\end{corollary}
+
+\begin{theorem}[收敛数列与其子数列间的关系]
+	如果数列\( \{x_{n}\} \)收敛于\( a \)，那么它的任一子数列也收敛，且极限也是\( a \).
+\end{theorem}
+
+\section{函数的极限}
+\subsection{函数极限的定义}
+
+\begin{definition}[函数极限]
+	\label{def:fctlim1}
+	设函数\( f(x) \)在点\( x_{0} \)的某一去心领域内有定义。如果存在常数\( A \)，对于任意给定的正数\( \varepsilon \)（不论它多么小），总存在正整数\( \delta \)，使得当\( x \)满足不等式\( 0 < |x - x_{0}| < \delta \)时，对应的函数值\( f(x) \)都满足不等式
+	\[ |f(x) - A| < \varepsilon \]
+	那么常数\( A \)就叫做\uwave{函数\( f(x) \)当\( x \to x_{0} \)时的极限}，记作
+	\[ \lim_{x \to x_{0}}f(x) = A\quad \text{或} f(x) \rightarrow A\quad (\text{当}x \rightarrow x_{0}) \]
+\end{definition}
+
+\begin{note}
+	\begin{enumerate}
+		\item 定义\ \ref{def:fctlim1}\ 可以简单地表述为：
+		\( \lim\limits_{n \to x_{0}}f(x) = A \Leftrightarrow \forall \delta > 0,\text{当}0<|x - x_{0}|<\delta \text{时},\text{有}|f(x) - A| < \delta \).
+		\item 定义中\( 0 < |x - x_{0}| \)表示\( x \neq x_{0} \)，所以\( x \to x_{0} \)时\( f(x) \)没有极限，与\( f(x) \)在点\( x_{0} \)是否有定义并无关系.
+		\item 左右极限：
+		\begin{enumerate}
+			\item 左极限：在\( \lim\limits_{x \to x_{o}}f(x) = A \)的定义中，把\( 0 < |x - x_{0}| < \delta \)改为\( x_{0} - \delta < x < x_{0} \)，那么\( A \)就叫做函数\( f(x) \)当\( x \to x_{0} \)时的\uwave{左极限}，记作
+			\[ \lim_{x \to x_{0}^{-}}f(x) = A \quad \text{或} \quad f(x_{0}^{-}) = A \]
+			\item 右极限：类似地，在\( \lim\limits_{x \to x_{o}}f(x) = A \)的定义中，把\( 0 < |x - x_{0}| < \delta \)改为\( x_{0} < x < x_{0} + \delta \)，那么\( A \)就叫做函数\( f(x) \)当\( x \to x_{0} \)时的\uwave{右极限}，记作
+			\[ \lim_{x \to x_{0}^{+}}f(x) = A \quad \text{或} \quad f(x_{0}^{+}) = A \]
+			\item 左极限与右极限统称为\uwave{单侧极限}.
+		\end{enumerate}
+		\item 函数\( f(x) \)当\( x \to x_{0} \)时极限存在的{\heiti 充分必要条件}是左极限及右极限\uwave{各自存在并且相等}，即
+		\[ f(x_{0}^{-}) = f(x_{0}^{+}) \]
+	\end{enumerate}
+\end{note}
+
+\begin{definition}[函数极限]
+	\label{def:fctlim2}
+	设函数\( f(x) \)当\( |x| \)大于某一正数时有定义.如果存在常数\( A \)，对于任意给定的正数\( \varepsilon \)（不论它多么小），总存在着正数\( X \)，使得当\( x \)满足不等式\( |x| > X \)时，对应的函数值\( f(x) \)都满足不等式
+	\[ |f(x) - A| < \varepsilon \]
+	那么常数\( A \)就叫做\uwave{函数\( f(x) \)当\( x \to \infty \)时的极限}，记作
+	\[ \lim\limits_{x \to \infty}f(x) = A \quad \text{或} \quad f(x) \to A\quad(\text{当}x \to \infty) \]
+\end{definition}
+
+\begin{note}
+	\begin{enumerate}
+		\item 定义 \ref{def:fctlim2} 可以简单地表述为：\( \lim\limits_{x \to \infty}f(x) = A \Leftrightarrow \forall \varepsilon > 0, \exists X > 0,\text{当}|x|>X\text{时},\text{有}|f(x) - A| < \varepsilon \)
+		\item 如果\( x > 0 \)且无限增大（记作\( x \to +\infty \)），那么只要把定义 \ref{def:fctlim2} 中的\( |x| > X \)改为\( x > X \)，就可以得\( \lim\limits_{x \to +\infty}f(x) = A \)的定义.
+		\item 同样，如果\( x < 0 \)且\( |x| \)无限增大（记作\( x \to -\infty \)），那么只要把\( |x| > X \)改为\( x < -X \)，便得\( \lim\limits_{x \to -\infty} = A \)的定义.
+		\item 从几何上来说，\( \lim\limits_{x \to \infty}f(x) = A \)的意义是：作直线\( y = A - \varepsilon\ \text{和}\ y = A + \varepsilon \)，则总有一个正数\( X \)存在，使得当\( x < -X\ \text{或}\ x > X \)时，函数\( y = f(x) \)的图形位于这两条直线之间.这时，直线\( y = A \)是函数\( y = f(x) \)的图形的\uwave{水平渐近线}.
+	\end{enumerate}
+\end{note}
+
+\subsection{函数极限的性质}
+
+\begin{theorem}[唯一性]
+	如果\( \lim\limits_{x \to x_{0}}f(x) \)存在，那么这极限唯一.
+\end{theorem}
+\begin{theorem}[局部有界性]
+	如果\( \lim\limits_{x \to x_{0}}f(x) = A \)，那么存在常数\( M > 0 \)和\( \delta > 0 \)，使得当\( 0 < |x - x_{0}| < \delta \)时，有\( |f(x)| \leqslant M \).
+\end{theorem}
+\begin{theorem}[局部保号性]
+	如果\( \lim\limits_{x \to x_{0}}f(x) = A \)，且\( A > 0 \)（或\( A < 0 \)），那么存在常数\( \delta > 0 \)，使得当\( 0 < |x - x_{0}| < \delta \)时，有\( f(x) > 0 \)（或\( f(x) < 0 \)）.
+\end{theorem}
+
+\begin{theorem}
+	如果\( \lim\limits_{x \to x _{0}}f(x) = A\ (A \neq 0) \)，那么就存在着\( x_{0} \)的某一去心领域\( \mathring{U}(x_{0}) \)，当\( x \in \mathring{U}(x_{0}) \)时，就有\( |f(x) | > \dfrac{|A|}{2} \)
+\end{theorem}
+
+\begin{corollary}
+	如果在\( x_{0} \)的去心领域内\( f(x) \geqslant 0 \)或（\( f(x) \leqslant 0 \)），而且\( \lim\limits_{x \to x_{0}}f(x) = A \)，那么\( A \geqslant 0 \)（或\( A \leqslant 0 \)）.
+\end{corollary}
+
+\begin{theorem}[函数极限与数列极限的关系]
+	如果极限\( \lim\limits_{x \to x_{0}}f(x) \)存在，\( |x_{n}| \)为函数\( f(x) \)的定义域内任一收敛于\( x_{0} \)的数列，且满足：\( x_{n} \neq x_{0}\ (n \in N) \)，那么相应的函数值数列\( \{f(x_{n})\} \)必收敛，且\( \lim\limits_{n \to \infty}f(x_{n}) = \lim\limits_{x \to x_{0}}f(x) \).
+\end{theorem}
+
+\begin{note}
+	所有定义的使用条件可以替换为\( x \to * \)，即\\
+	\[ x \to x_{0} \Leftrightarrow x \to *,\ \text{其中}* \Rightarrow
+	\begin{cases*}
+		x_{0} \Rightarrow \begin{cases*}
+			x_{0}^{+} \\
+			x_{0}^{-} \\
+		\end{cases*} \\
+		\infty \Rightarrow \begin{cases*}
+			-\infty \\
+			+\infty \\
+		\end{cases*} \\
+	\end{cases*} \]
+\end{note}
+
+\section{无穷小与无穷大}
+\subsection{无穷小}
+
+\begin{definition}[无穷小]
+	如果函数\( f(x) \)当\( x \to x_{0} \)（或\( x \to \infty \)）时的极限为零，那么称函数\( f(x) \)为当\( x \to x_{0} \)（或\( x \to \infty \)时的无穷小.
+	特别地，以零为极限的数列\( \{x_{n}\} \)称为\( n \to \infty \)时的无穷小.
+\end{definition}
+
+\begin{note}
+	无穷小
+	\( \begin{cases}
+		\text{常数函数：}0. \\
+		\text{以零为极限的函数（或数列）}. \\
+	\end{cases} \)
+\end{note}
+
+\begin{theorem}
+	在自变量的同一变化过程\( x \to x_{0} \)（或\( x \to \infty \)）中，函数\( f(x) \)具有极限\( A \)的{\heiti 充分必要条件}是\( f(x) = A + \alpha \)，其中\( \alpha \)是无穷小.
+\end{theorem}
+
+\subsection{无穷大}
+
+\begin{definition}[无穷大]
+	设函数\( f(x) \)在\( x_{0} \)的某一去心领域内有定义（或\( |x| \)大于某一正数时有定义）.如果对于任意给定的正数\( M \)（不论它多么大），总存在正数\( \delta \)（或正数\( X \)），只要\( x \)适合不等式\( 0 < | x - x_{0} | < \delta \)（或\( |x| > X \)），对应的函数值\( f(X) \)总满足不等式
+	\[ | f(x) | > M \]
+	那么称函数\( f(x) \)是当\( x \to x_{0} \)（或\( x \to \infty \)）时的无穷大.
+\end{definition}
+
+\begin{note}
+	\begin{enumerate}
+		\item 无穷大与无界的比较：
+		\[ \begin{array}{ll}
+			\text{无穷大：} & \forall M > 0,\ x \to *,\ |f(x)| > M. \\
+			\text{无界：}   & \forall M > 0,\ \exists x_{0} \in D,\ |f(x_{0})| > M. \\
+		\end{array} \]
+		\item 极限不存在的常见情况：
+		\begin{enumerate}
+			\item 无界函数.
+			\item 有界函数但是极限不存在，例：\( y = \sin x \).
+		\end{enumerate}
+	\end{enumerate}
+\end{note}
+
+\begin{theorem}
+	在自变量的同一变化过程中，如果\( f(x) \)为无穷大，那么\( \dfrac{1}{f(x)} \)为无穷小，反之，如果\( f(x) \)为无穷小，且\( f(x) \neq 0 \)，那么\( \dfrac{1}{f(x)} \)为无穷大.
+\end{theorem}
+
+\section{极限运算法则}
+
+\begin{theorem}
+	两个无穷小的和是无穷小.
+\end{theorem}
+
+\begin{note}
+	用\uwave{数学归纳法}可证：\textcolor{red}{有限个无穷小之和也是无穷小}.
+\end{note}
+
+\begin{theorem}
+	有界函数与无穷小的乘积是无穷小.
+\end{theorem}
+\begin{example}
+	\[ \lim\limits_{x \to \infty}\dfrac{\arctan x}{x} = \lim\limits_{x \to \infty}\dfrac{1}{x} \cdot \arctan x = 0. \]
+\end{example}
+
+\begin{note}
+	常数的极限是常数本身.
+\end{note}
+
+\begin{corollary}
+	常数与无穷小的乘积是无穷小.
+\end{corollary}
+
+\begin{corollary}
+	有限个无穷小的乘积是无穷小.
+\end{corollary}
+
+\begin{theorem}
+	如果\( \lim f(x) = A \)、\( \lim g(x) = B \)（即，若两函数极限存在），那么：
+	\begin{enumerate}
+		\item 和（或差）的极限等于极限的和（或差）：\( \lim [f(x) \pm g(x)] = \lim f(x) \pm \lim g(x) = A \pm B \);
+		\item 积的极限等于极限的积：\( \lim [f(x) \cdot g(x)] = \lim f(x) \cdot \lim g(x) = A \cdot B \);
+		\item 商的极限等于极限的商：（若又有\( B \neq 0 \)）
+		\[ \lim \dfrac{f(x)}{g(x)} = \dfrac{\lim f(x)}{\lim g(x)} = \dfrac{A}{B} \]
+	\end{enumerate}
+\end{theorem}
+
+\begin{corollary}
+	如果\( \lim f(x) \)存在，而\( c \)为常数，那么
+	\[ \lim [cf(x)] = c\lim f(x) \]
+\end{corollary}
+\begin{note}
+	这是因为\( \lim c = c \)
+\end{note}
+
+\begin{corollary}
+	如果\( \lim f(x) \)存在，而\( u \)是正整数，那么
+	\[ \lim [f(x)]^{n} = [\lim f(x)]^{n} \]
+\end{corollary}
+\begin{note}
+	\textcolor{red}{幂的极限等于极限的幂}.
+\end{note}
+
+\begin{theorem}
+	设有数列\( \{x_{n}\} \)和\( \{y_{n}\} \).如果
+	\[ \lim\limits_{n \to \infty}x_{n} = A,\quad \lim\limits_{n \to \infty}y_{n} = B \]
+	那么
+	\begin{enumerate}
+		\item \( \lim\limits_{n \to \infty}(x_{n} \pm y_{n}) = A \pm B \);
+		\item \( \lim\limits_{n \to \infty}(x_{n} \cdot y_{n}) = A \cdot B \);
+		\item 当\( y_{n} \neq 0\quad(n =1,\ 2,\ \cdots) \)且\( B \neq 0 \)时，\( \lim\limits_{n \to \infty}\dfrac{x_{n}}{y_{n}} = \dfrac{A}{B} \)
+	\end{enumerate}
+\end{theorem}
+
+\begin{theorem}
+	如果\( \varphi (x) \geqslant \psi (x) \)，而\( \lim \varphi (x) = A \)，\( \lim \psi (x) = B \)，那么\( A \geqslant B \)
+\end{theorem}
+
+\begin{theorem}[复合函数的极限运算法则]
+	设函数\( y = f[g(x)] \)是由函数\( u = g(x) \)与函数\( y = f(u) \)复合而成，\( f[g(x)] \)在点\( x_{0} \)的某去心领域内有定义，若\( \lim\limits_{x \to x_{0}}g(x) = u_{0} \)，\( \lim\limits_{u \to u_{0}} = A \)，且存在\( \delta_{0} > 0 \)，当\( x \in \mathring{U}(x_{0}, \delta_{0}) \)时，有\( g(x) \neq u_{0} \)，则
+	\[ \lim\limits_{x \to x_{0}}f[g(x)] = \lim\limits_{u \to u_{0}}f(u) = A \]
+\end{theorem}
+
+\begin{theorem}
+	如果\( \lim\limits_{x \to x_{0}}f(x) \)存在，但\( \lim\limits_{x \to x_{0}} \)不存在，那么\( \lim\limits_{x \to x_{0}}[f(x) \pm g(x)] \)不存在.
+\end{theorem}
+
+\section{极限存在准则\quad 两个重要极限}
+
+\begin{note}
+	\begin{enumerate}
+		\item 夹逼准则
+		\begin{enumerate}
+			\item 如果数列\( \{x_{n}\} \)，\( \{y_{n}\} \)及\( \{z_{n}\} \)满足下列条件：
+			\begin{enumerate}
+				\item 从某项起，即\( \exists n_{0} \in N_{+} \)，当\( n > n_{0} \)时，有
+				\[ y _{n} \leqslant x_{n} \leqslant z_{n} \]
+				\item \( \lim\limits_{n \to \infty}y_{n} = a \)，\( \lim\limits_{n \to \infty}z_{n} = a \)
+			\end{enumerate}
+			那么数列\( \{x_{n}\} \)的极限存在，且\( \lim\limits_{n \to \infty}x_{n} = a \).
+			\item 如果
+			\begin{enumerate}
+				\item 当\( x \in \mathring{U}(x_{0}, r) \)（或\( |x| > M \)）时，
+				\[ g(x) \leqslant f(x) \leqslant h(x) \]
+				\item \( \lim\limits_{\substack{x \to x_{0}\\\\(x \to \infty)}}g(x) = A \)，\( \lim\limits_{\substack{x \to x_{0}\\\\(x \to \infty)}}h(x) = A \)
+			\end{enumerate}
+			那么\( \lim\limits_{\substack{x \to x_{0}\\\\(x \to \infty)}}f(x) \)存在，且等于\( A \).
+		\end{enumerate}
+		\item 单调有界数列必有极限.
+		\item 设函数\( f(x) \)在点\( x_{0} \)的某个左领域内单调并且有界，则\( f(x) \)在\( x_{0} \)的左极限\( f(x_{0}^{-}) \)必定存在.
+		\item 柯西（Cauchy）极限存在准则（或\uwave{柯西审敛原理}）：数列\( \{x_{n}\} \)收敛的{\heiti 充分必要条件}是：对于任意给定的正数\( \varepsilon \)，存在正整数\( N \)，使得当\( m > N,\quad n>N \)时，有
+		\[ |x_{n} - x_{m} | < \varepsilon \]
+	\end{enumerate}
+\end{note}
+
+\section{无穷小的比较}
+\begin{definition}
+	如果\( \lim \dfrac{\beta}{\alpha} = 0 \)，那么就说\( \beta \)是比\( \alpha \)\uwave{高阶的无穷小}，记作\( \beta = o(\alpha) \);\\\\
+	如果\( \lim \dfrac{\beta}{\alpha} = \infty \)，那么就说\( \beta \)是比\( \alpha \)\uwave{低阶的无穷小};\\\\
+	如果\( \lim \dfrac{\beta}{\alpha} = c \neq 0 \)，那么就说\( \beta \)与\( \alpha \)是\uwave{同阶无穷小};\\\\
+	如果\( \lim \dfrac{\beta}{\alpha^{k}} = c \neq 0,\ k > 0 \)，那么就说\( \beta \)是关于\( \alpha \)的\uwave{\( k \)阶无穷小};\\\\
+	如果\( \lim \dfrac{\beta}{\alpha} = 1 \)，那么就说\( \beta \)与\( \alpha \)是\uwave{等价无穷小}，记作\( \alpha \sim \beta \).
+\end{definition}
+
+\begin{theorem}
+	\( \beta \)与\( \alpha \)是等价无穷小的{\heiti 充分必要条件}为
+	\[ \beta = \alpha + o(\alpha) \]
+\end{theorem}
+
+\begin{theorem}
+	设\( \alpha \sim \widetilde{\alpha} \)，\( \beta \sim \widetilde{\beta} \)，且\( \lim \dfrac{\widetilde{\beta}}{\widetilde{\alpha}} \)存在，则
+	\[ \lim\dfrac{\beta}{\alpha} = \lim\dfrac{\widetilde{\beta}}{\widetilde{\alpha}} \]
+\end{theorem}
+
+\section{函数的连续性与间断点}
+
+\subsection{函数的连续性}
+\begin{definition}
+	\begin{enumerate}
+		\item 设函数\( y = f(x) \)在点\( x_{0} \)的某一零域内有定义，如果
+		\[ \lim\limits_{\Delta x \to 0}\Delta y = \lim\limits_{\Delta x \to 0}[f(x + \Delta x) - f(x_{0})] = 0 \]
+		那么就称函数\( y = f(x) \)在点\( x_{0} \)连续.
+		\item 设函数\( y = f(x) \)在点\( x_{0} \)的某一领域内有定义，如果
+		\[ \lim\limits_{x \to x_{0}}f(x) = f(x_{0}) \]
+		那么就称函数\( f(x) \)在点\( x_{0} \)连续.
+		\item \( f(x) \)在点\( x_{0} \)连续\( \Leftrightarrow \varepsilon > 0,\ \exists \delta > 0,\ \text{当}| x - x_{0}|< \delta \text{时，有}|f(x) - f(x_{0})| < \varepsilon \).
+	\end{enumerate}
+\end{definition}
+
+\begin{note}
+	\label{not:tiaojian}
+	函数在某点连续的{\heiti 充分必要条件}是：
+	\begin{enumerate}[label=\( \Circled{\arabic*} \)]
+		\item 有定义（在该点有函数值）;
+		\item 有极限;
+		\item 极限值 \( = \) 函数值.
+	\end{enumerate}
+\end{note}
+
+\begin{definition}[左右连续]
+	\begin{enumerate}
+		\item 如果\( \lim\limits_{x \to x_{0}^{-}}f(x) = f(x_{0}^{-}) \)存在且等于\( f(x_{0}) \)，即
+		\[ f(x_{0}^{-}) = f(x_{0}) \]
+		那么就说函数\( f(x) \)在点\( x_{0} \)\uwave{左连续};
+		\item 如果\( \lim\limits_{x \to x_{0}^{+}}f(x) = f(x_{0}^{+}) \)存在且等于\( f(x_{0}) \)，即
+		\[ f(x_{0}^{+}) = f(x_{0}) \]
+		那么就说函数\( f(x) \)在点\( x_{0} \)\uwave{右连续}.
+	\end{enumerate}
+\end{definition}
+
+\subsection{函数的间断点}
+\begin{note}
+	间断点的分类：
+	\begin{enumerate}[label=\Roman*类：]
+		\item 左右极限都存在
+		\begin{enumerate}
+			\item 可去间断点（\( f(x_{0}^{-}) = f(x_{0}^{+}) \)）;
+			\item 跳跃间断点（\( f(x_{0}^{-}) \neq f(x_{0}^{+}) \)）.
+		\end{enumerate}
+		\item 左右极限至少存在一个
+		\begin{enumerate}
+			\item 无穷间断点;
+			\item 震荡间断点.
+		\end{enumerate}
+	\end{enumerate}
+\end{note}
+
+\section{连续函数的运算与初等函数的连续性}
+
+\begin{theorem}
+	设函数\( f(x) \)和\( g(x) \)在点\( x_{0} \)连续，则它们的和（差）\( f \pm g \)、积\( f \cdot g \)及商\( \dfrac{f}{g} \)（当\( g(x_{0}) \neq 0 \)时）都在点\( x_{0} \)连续
+\end{theorem}
+
+\begin{theorem}
+	如果函数\( y = f(x) \)在区间\( I_{x} \)上单调增加（或单调减少）且连续，那么它的反函数\( x = f^{-1}(x) \)也在对应的区间\( I_{y} = \{y | y = f(x),\ x\in I_{x}\} \)上单调增加（或单调减少）且连续.
+\end{theorem}
+
+\begin{theorem}
+	设函数\( y =f[\ g(x)\ ] \)由函数\( u = g(x) \)与函数\( y = f(u) \)复合而成，\( \mathring{U}(x_{0}) \subset D_{f \cdot g} \).若\( \lim\limits_{x \to x_{0}}g(x_{0}) = u_{0} \)，而函数\( y = f(u) \)在\( u = u_{0} \)连续，则
+	\[ \lim\limits_{x \to x_{0}}f[\ g(x)\ ] = \lim\limits_{u \to u_{0}}f(u) = f(u_{0}) \]
+\end{theorem}
+
+\begin{note}
+	在外层函数连续的情况下，求复合函数\( f[\ g(x)\ ] \)的极限时，函数复合\( f \)与极限号\( \lim\limits_{x \to x_{0}} \)可以交换次序.
+	\begin{example}
+		\[ \lim\limits_{x \to o}e^{\cos x} = e^{\lim\limits_{x \to 0}\cos x} = e^{\cos o} = e \]
+	\end{example}
+\end{note}
+
+\begin{theorem}
+	设函数\( y = f[g(x)] \)是由函数\( u = g(x) \)与函数\( y = f(u) \)复合而成，\( U(x_{0}) \in D_{f \circ g} \).若函数\( u = g(x) \)在\( x = x_{0} \)连续，且\( g(x_{0}) = u_{0} \)，而函数\( y = f(u) \)在\( u = u_{0} \)连续，则复合函数\( y = f[g(x)] \)在\( x = x_{0} \)也连续.
+\end{theorem}
+
+\begin{conclusion}
+	基本初等函数在它们的定义域内都是连续的.
+\end{conclusion}
+
+\begin{conclusion}
+	一切初等函数在其定义区间内都是连续的.所谓\uwave{定于区间}，就是包含在定义域内的区间
+\end{conclusion}
+
+\begin{example}
+	\( y = \sqrt{x^{2}(x - 1)} \)的定义域为\( D = \{0\}\cup [1, +\infty) \)，但是不讨论函数在\(  x = 0 \)处的连续性，因为\( x = 0 \)是\uwave{孤立点}.
+\end{example}
+
+\begin{definition}[幂指函数]
+	一般地，对于形如\( u(x)^{v(x)}\quad(u(x) > 0, u(x) \neq 1) \)的函数（通常称为\uwave{幂指函数}），如果
+	\[ \lim u(x) = a > 0,\ \lim v(x) = b \]
+	那么
+	\[ \lim u(x)^{v(x)} = a^{b} \]
+\end{definition}
+
+\section{闭区间上连续函数的性质}
+
+\subsection{有界性与最大值最小值定理}
+\begin{theorem}[有界性与最大值最小值定理]
+	在闭区间上连续的函数在该区间上有界且一定能取得它的最大值和最小值.
+\end{theorem}
+
+\subsection{零点定理与介值定理}
+
+\begin{theorem}[零点定理]
+	设函数\( f(x) \)在闭区间\( [a,b] \)上连续，且\( f(a) \)与\( f(b) \)异号（即\( f(a) \cdot f(b) < 0 \)），则在开区间\( (a,b) \)内至少有一点\( \xi \)，使得
+	\[ f(\xi) = 0 \]
+\end{theorem}
+
+\begin{theorem}[介值定理]
+	设函数\( f(x) \)在闭区间\( [a,b] \)上连续，且在这区间的端点取得不同的函数值
+	\[ f(x) = A \quad \text{及}\quad f(b) = B \]
+	则对于\( A \)与\( B \)之间的任意一个数\( C \)，在开区间\( (a,b) \)内至少有一点\( \xi \)，使得
+	\[ f(\xi) = C \quad (a < \xi < b) \]
+\end{theorem}
+
+\begin{corollary}
+	在闭区间\( [a,b] \)上连续的函数\( f(x) \)的值域为闭区间\( [m,M] \)，其中\( m \)与\( M \)依次为\( f(x) \)在\( [a,b] \)上的最小值与最大值.
+\end{corollary}
+
+%\subsection{一致连续性}
+%
+%\begin{definition}
+%	设函数\( f(x) \)在区间\( I \)上有定义.如果对于任意给定的正数\( \varepsilon \)，总存在整数\( \delta \)，使得对于区间\( I \)上的任意两点\( x_{1} \)、\( x_{2} \).当\( |x_{1} - x_{2} | < \delta \)时，有
+%	\[ |f(x_{1}) - f(x_{2}) | < \varepsilon \]
+%	那么称函数\( f(x) \)在区间\( I \)上一致连续.
+%\end{definition}
+
+\newpage
+\begin{problemset}[错题集]
+	\item 
+\end{problemset}
